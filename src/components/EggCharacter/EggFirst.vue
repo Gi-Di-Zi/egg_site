@@ -3,7 +3,7 @@
 <template>
   <a-card :body-style="{ padding: 0, overflow: 'hidden' }">
     <a-flex justify="flex-start">
-      <img alt="avatar" id="myImage" src="../img/egg.png" />
+      <img alt="avatar" id="myImage" src="../../img/egg.png" />
       <a-flex
         vertical
         align="flex-start"
@@ -13,9 +13,6 @@
         <a-typography>
           <a-typography-title :level="3"> “저는 알이에요.” </a-typography-title>
         </a-typography>
-        <a-button type="primary" href="https://antdv.com" target="_blank"
-          >Get Start</a-button
-        >
       </a-flex>
     </a-flex>
   </a-card>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import EggFirst from "./EggFirst.vue";
+import EggFirst from "./EggCharacter/EggFirst.vue";
 import { pageConfig } from "@/store";
 import {
   userOutlined,
