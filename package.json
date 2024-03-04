@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "egg-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "ant-design-vue": "^4.1.2",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "pinia": "^2.1.7",
+    "vue": "^3.2.13",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
