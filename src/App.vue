@@ -14,6 +14,9 @@ const showPage = computed(() => store.state.showPage);
 const backToMain = () => {
   selectedKeys.value = ["0"];
   router.push("/");
+
+  const { changePage } = store;
+  changePage("");
 };
 const movePage = (key) => {
   if (key === 1) {
@@ -40,10 +43,13 @@ const movePage = (key) => {
 
 <template>
   <a-layout>
-    <a-layout-header class="header" style="display: inline-flex">
+    <a-layout-header
+      class="header"
+      style="display: inline-flex; margin-left: 50px; margin-right: 50px"
+    >
       <div class="logo">
         <img
-          src="./img/egg.png"
+          src="./images/along1.png"
           style="height: 64px; margin-right: 30px"
           alt="oops!"
           @click="backToMain"
@@ -52,8 +58,8 @@ const movePage = (key) => {
       <a-menu
         theme="dark"
         mode="horizontal"
-        style="width: 500px"
         v-model:selected-keys="selectedKeys"
+        class="headerMenu"
       >
         <a-menu-item key="1" @click="() => movePage(1)">캐릭터</a-menu-item>
         <a-menu-item key="2" @click="() => movePage(2)">세계관</a-menu-item>
@@ -85,6 +91,8 @@ const movePage = (key) => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
+  width: 100%;
+  overflow: auto !important;
 }
 </style>
