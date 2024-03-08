@@ -1,10 +1,5 @@
-<script setup>
-  import { ref } from 'vue'
-  const test = ref("메인이당")
-</script>
+<script setup></script>
 
 <template>
-  <h1>{{test}}</h1>
-
+  <a-typography-title :level="2">메인</a-typography-title>
 </template>
-

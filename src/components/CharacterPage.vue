@@ -16,9 +16,7 @@ onMounted(() => {
   changePage("캐릭터");
 });
 
-const test = ref("캐릭터 페이지");
-
-const selectedKey = ref("1");
+const selectedKey = ref("0");
 const showCharacter = (key) => {
   selectedKey.value = key.toString();
   console.log(key);
@@ -149,25 +147,9 @@ const showCharacter = (key) => {
       <EggSecond />
     </div>
     <div v-if="selectedKey !== '1'">
-      {{ test }}
+      <a-typography-title :level="2">캐릭터</a-typography-title>
     </div>
   </a-layout-content>
 </template>
 
-<style>
-img {
-  display: block;
-}
-@media screen and (max-width: 1120px) {
-  .verticalSider {
-    display: none !important;
-  }
-  .horizontalSider {
-    visibility: visible !important;
-    background-color: white !important;
-  }
-  .charaContent {
-    margin-top: 80px;
-  }
-}
-</style>
+<style></style>

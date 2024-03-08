@@ -54,37 +54,4 @@
   </a-card>
 </template>
 
-<style scoped>
-.charaImage {
-  width: 200px;
-  object-fit: contain;
-}
-
-.turnaroundImage {
-  width: 600px;
-  object-fit: contain;
-}
-
-@media screen and (max-width: 1400px) {
-  .charaExplain {
-    flex-direction: column !important;
-  }
-}
-@media screen and (max-width: 850px) {
-  .charaImage {
-    width: 150px;
-  }
-  .turnaroundImage {
-    width: 500px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .charaImage {
-    width: 100px;
-  }
-  .turnaroundImage {
-    width: 275px;
-  }
-}
-</style>
+<style scoped></style>
