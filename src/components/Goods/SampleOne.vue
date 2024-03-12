@@ -11,6 +11,7 @@ const test = () => {
       <img
         alt="example"
         src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+        style="height: 300px"
       />
     </template>
     <a-card-meta>

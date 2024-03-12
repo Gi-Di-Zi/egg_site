@@ -11,6 +11,12 @@ img {
     object-fit: contain;
 }
 
+.contactForm {
+    width: 80%;
+    height: 40px;
+    margin: 20px auto;
+}
+
 @media screen and (max-width: 1400px) {
     .charaExplain {
         flex-direction: column !important;
