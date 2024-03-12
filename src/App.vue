@@ -1,15 +1,28 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
-
+import { supabase } from "@/utils/supabase";
 import { pageConfig } from "@/store";
+
+const contects = ref([]);
 const store = pageConfig();
-
 const router = useRouter();
-
 let selectedKeys = ref(["1"]);
 
 const showPage = computed(() => store.state.showPage);
+
+async function getContects() {
+  const { data } = await supabase.from("contect").select("*");
+  contects.value = data;
+  console.log(data);
+  if (data != null) {
+    console.log("성공!");
+  }
+}
+
+onMounted(() => {
+  getContects();
+});
 
 const backToMain = () => {
   selectedKeys.value = ["0"];
@@ -84,15 +97,4 @@ const movePage = (key) => {
   </a-layout>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 20px;
-  width: 100%;
-  overflow: auto !important;
-}
-</style>
+<style></style>

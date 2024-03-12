@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@supabase/supabase-js": "^2.39.8",
     "ant-design-vue": "^4.1.2",
     "core-js": "^3.8.3",
     "pinia": "^2.1.7",
