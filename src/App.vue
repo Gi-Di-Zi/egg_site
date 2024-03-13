@@ -2,10 +2,16 @@
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { pageConfig } from "@/store";
+import { message as msg } from "ant-design-vue";
 
 const store = pageConfig();
 const router = useRouter();
 let selectedKeys = ref(["1"]);
+
+const showModal = ref(false);
+
+const adminId = ref("");
+const adminPassword = ref("");
 
 const showPage = computed(() => store.state.showPage);
 
@@ -36,6 +42,24 @@ const movePage = (key) => {
     router.push("contect");
     selectedKeys.value = ["6"];
   }
+};
+
+const modalOn = () => {
+  showModal.value = true;
+};
+const okModal = () => {
+  const id = adminId.value;
+  const password = adminPassword.value;
+  if (id === "test" && password === "test") {
+    localStorage.setItem("access", true);
+    router.push("admin");
+  } else {
+    msg.error("정보가 맞지 않습니다.");
+  }
+  showModal.value = false;
+};
+const cancelModal = () => {
+  showModal.value = false;
 };
 </script>
 
@@ -78,8 +102,25 @@ const movePage = (key) => {
     </a-layout-content>
     <a-layout-footer style="text-align: center">
       The Egg Page ©2024 Created by Kim Dong Jin
+      <a-button @click="modalOn">관리자 페이지</a-button>
     </a-layout-footer>
   </a-layout>
+
+  <a-modal :open="showModal" okText="OK" @ok="okModal" @cancel="cancelModal">
+    <template #title>
+      <div>관리자 페이지 접속</div>
+    </template>
+    <a-input
+      v-model:value="adminId"
+      placeholder="관리자 아이디"
+      style="width: 450px; margin: 10px"
+    ></a-input>
+    <a-input-password
+      v-model:value="adminPassword"
+      placeholder="관리자 비밀번호"
+      style="width: 450px; margin: 10px"
+    ></a-input-password>
+  </a-modal>
 </template>
 
 <style></style>

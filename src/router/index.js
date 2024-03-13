@@ -7,6 +7,7 @@ import EpisodePage from "@/components/EpisodePage.vue";
 import AuthorPage from "@/components/AuthorPage.vue";
 import SalesPage from "@/components/SalesPage.vue";
 import ContectPage from "@/components/ContectPage.vue";
+import AdminPage from "@/components/AdminPage.vue";
 
 const routes = [
   { path: "/character", name: "character-page", component: CharacterPage },
@@ -16,8 +17,35 @@ const routes = [
   { path: "/sales", name: "sales-page", component: SalesPage },
   { path: "/contect", name: "contect-page", component: ContectPage },
   { path: "/", name: "main-page", component: MainPage },
+  {
+    path: "/admin",
+    name: "admin-page",
+    component: AdminPage,
+    beforeEnter: (to, from, next) => {
+      if (!hasAccessToAdmin()) {
+        next({ name: "main-page" });
+      } else {
+        next();
+      }
+    },
+  },
 ];
 
 const router = createRouter({ history: createWebHistory("/egg"), routes });
+
+function hasAccessToAdmin() {
+  return localStorage.getItem("access") === "true";
+}
+router.beforeEach((to, from, next) => {
+  if (to.path === "/admin" && !hasAccessToAdmin()) {
+    next({ name: "main-page" });
+  } else if (to.path === "/") {
+    // If going to main page, clear localStorage
+    localStorage.clear();
+    next();
+  } else {
+    next();
+  }
+});
 
 export { router };

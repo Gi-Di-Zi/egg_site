@@ -37,7 +37,7 @@ const okModal = () => {
     insertContect();
     modalVisible2.value = true;
   } else {
-    msg.error("채워지지 않는 부분이 있습니다.");
+    msg.error("채워지지 않은 부분이 있습니다.");
   }
 
   modalVisible.value = false;
