@@ -57,6 +57,8 @@ const okModal = () => {
     msg.error("정보가 맞지 않습니다.");
   }
   showModal.value = false;
+  adminId.value = "";
+  adminPassword.value = "";
 };
 const cancelModal = () => {
   showModal.value = false;
