@@ -8,6 +8,7 @@ import AuthorPage from "@/components/AuthorPage.vue";
 import SalesPage from "@/components/SalesPage.vue";
 import ContectPage from "@/components/ContectPage.vue";
 import AdminPage from "@/components/AdminPage.vue";
+import ErrorPage from "@/components/ErrorPage.vue";
 
 const routes = [
   { path: "/character", name: "character-page", component: CharacterPage },
@@ -29,6 +30,7 @@ const routes = [
       }
     },
   },
+  { path: "/:pathMatch(.*)*", name: "NotFound", component: ErrorPage },
 ];
 
 const router = createRouter({ history: createWebHashHistory("/egg"), routes });
