@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 import MainPage from "@/components/MainPage.vue";
 import CharacterPage from "../components/CharacterPage.vue";
@@ -31,7 +31,7 @@ const routes = [
   },
 ];
 
-const router = createRouter({ history: createWebHistory("/egg"), routes });
+const router = createRouter({ history: createWebHashHistory("/egg"), routes });
 
 function hasAccessToAdmin() {
   return localStorage.getItem("access") === "true";

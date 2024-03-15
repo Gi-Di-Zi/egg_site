@@ -80,7 +80,7 @@ async function uploadSales() {
     <a-input
       id="imageInput"
       type="file"
-      placeholder="제품 사진"
+      placeholder="제품 사진 (반드시 영어 이름으로!)"
       @change="uploadFile"
     />
     <a-button @click="uploadSales">업로드</a-button>
