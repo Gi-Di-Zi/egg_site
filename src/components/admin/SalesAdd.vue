@@ -34,9 +34,6 @@ const uploadFile = async (event) => {
     } else {
       msg.error("전송에 문제가 있습니다.");
     }
-    setTimeout(() => {
-      location.reload(); // refresh the page after 3 seconds
-    }, 1000);
   } else {
     console.log("Image uploaded successfully!");
   }
