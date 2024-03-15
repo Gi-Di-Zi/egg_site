@@ -70,19 +70,28 @@ async function uploadSales() {
 </script>
 
 <template>
-  <a-card style="width: 800px">
+  <a-card style="width: 800px; display: block">
     <template #cover>
       <a-typography-title :level="2">제품 추가</a-typography-title>
     </template>
     <a-input placeholder="제품 이름" v-model:value="name" />
     <a-input placeholder="제품 가격" v-model:value="price" />
     <a-input placeholder="제품 설명" v-model:value="description" />
+    <a-typography-title :level="5"
+      >메인 제품 사진 ( 반드시 영어로 작성 )</a-typography-title
+    >
     <a-input
       id="imageInput"
       type="file"
-      placeholder="제품 사진 (반드시 영어 이름으로!)"
+      placeholder="메인 사진"
       @change="uploadFile"
     />
+    <a-typography-title :level="5"
+      >추가 제품 사진 ( 최대 3장 까지 - 미구현 )</a-typography-title
+    >
+    <a-input id="imageInput" type="file" placeholder="서브 사진 1" />
+    <a-input id="imageInput" type="file" placeholder="서브 사진 2" />
+    <a-input id="imageInput" type="file" placeholder="서브 사진 3" />
     <a-button @click="uploadSales">업로드</a-button>
   </a-card>
 </template>
