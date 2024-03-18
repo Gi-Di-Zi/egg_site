@@ -7,7 +7,7 @@ const store = pageConfig();
 const { changePage } = store;
 
 onMounted(() => {
-  changePage("월드");
+  changePage("세계관");
 });
 </script>
 

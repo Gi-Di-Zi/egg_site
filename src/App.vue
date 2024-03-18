@@ -6,7 +6,7 @@ import { message as msg } from "ant-design-vue";
 
 const store = pageConfig();
 const router = useRouter();
-let selectedKeys = ref(["1"]);
+let selectedKeys = computed(() => store.state.selectedKey);
 
 const showModal = ref(false);
 

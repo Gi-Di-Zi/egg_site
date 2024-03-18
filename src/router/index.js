@@ -43,7 +43,7 @@ function hasAccessToAdmin() {
 router.beforeEach((to, from, next) => {
   if (to.path === "/admin" && !hasAccessToAdmin()) {
     next({ name: "main-page" });
-  } else if (to.path === "/") {
+  } else if (to.path !== "/admin") {
     // If going to main page, clear localStorage
     localStorage.clear();
     next();

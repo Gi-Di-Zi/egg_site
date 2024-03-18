@@ -1,6 +1,17 @@
 <script setup>
 import SalesAdd from "@/components/admin/SalesAdd.vue";
 import SalesChange from "@/components/admin/SalesChange.vue";
+
+import { onMounted } from "vue";
+import { pageConfig } from "@/store";
+
+const store = pageConfig();
+
+const { changePage } = store;
+
+onMounted(() => {
+  changePage("관리자");
+});
 </script>
 
 <template>
