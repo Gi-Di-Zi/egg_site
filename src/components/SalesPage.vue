@@ -6,6 +6,8 @@ import { supabase } from "@/utils/supabase";
 
 const store = pageConfig();
 
+const loading = ref(false);
+
 const pagination = ref(6);
 
 const totalItems = ref(0);
@@ -23,20 +25,21 @@ const value = ref(data[0]);
 const current = ref(1);
 const goods = reactive({
   list: [],
+  loading: [],
 });
 
 const { changePage } = store;
 
 onMounted(async () => {
+  getGoodsList();
+  changePage("Goods");
+
   const { count } = await supabase
     .from("sales")
     .select("id", { count: "exact" })
     .eq("show", "true");
   // totalItems를 얻기 위한 쿼리
   totalItems.value = count;
-
-  changePage("Goods");
-  getGoodsList();
 });
 
 watch(current, () => {
@@ -44,7 +47,8 @@ watch(current, () => {
 });
 
 async function getGoodsList() {
-  const { data, error } = await supabase
+  loading.value = true;
+  const { data } = await supabase
     .from("sales")
     .select()
     .filter("show", "eq", true)
@@ -54,11 +58,11 @@ async function getGoodsList() {
       current.value * pagination.value - 1
     );
   goods.list = data;
-  console.log(goods.list);
-  error;
+  loading.value = false;
 }
 
 async function sortGoodsList(event) {
+  loading.value = true;
   currentEvent.value = event;
   const { data } = await supabase
     .from("sales")
@@ -69,8 +73,9 @@ async function sortGoodsList(event) {
       current.value * pagination.value - 1
     );
   let sortedArray;
+
   if (event === "랭킹순") {
-    getGoodsList();
+    sortedArray = data;
   } else if (event === "판매량순") {
     sortedArray = data.sort((a, b) => b.count_sales - a.count_sales);
     goods.list = [...sortedArray];
@@ -95,6 +100,7 @@ async function sortGoodsList(event) {
     );
     goods.list = [...sortedArray];
   }
+  loading.value = false;
 }
 </script>
 
@@ -109,7 +115,9 @@ async function sortGoodsList(event) {
   />
   <a-divider style="height: 1px; background-color: #000000" />
   <div style="display: flex; flex-wrap: wrap; justify-content: center">
+    <a-spin size="large" v-if="loading" style="margin-top: 200px" />
     <GoodsCard
+      v-else
       v-for="value in goods.list"
       :key="value.id"
       :data="value"

@@ -5,15 +5,15 @@
     <a-flex class="charaExplain">
       <a-flex>
         <img
-          alt="avatar"
+          alt="main1"
           id="mainImage"
-          src="../../images/along1.png"
+          src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along1.png"
           class="charaImage"
         />
         <img
-          alt="avatar"
+          alt="main2"
           id="actImage"
-          src="../../images/along2.png"
+          src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along2.png"
           class="charaImage"
         />
       </a-flex>
@@ -45,12 +45,16 @@
       </a-flex>
     </a-flex>
     <img
-      alt="avatar"
+      alt="turnaround"
       id="turnaroundImage"
-      src="../../images/along_turnaround.png"
+      src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along_turnaround.png"
       class="turnaroundImage"
     />
-    <img src="../../images/along_doodle1.png" class="turnaroundImage" />
+    <img
+      alt="doodle"
+      src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along_doodle1.png"
+      class="turnaroundImage"
+    />
   </a-card>
 </template>
 
