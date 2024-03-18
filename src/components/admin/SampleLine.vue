@@ -80,6 +80,7 @@ async function changeGoods() {
       name: salesName.value,
       price: salesPrice.value,
       description: salesDescription.value,
+      regist_time: new Date(),
     })
     .eq("id", props.data.id)
     .select();

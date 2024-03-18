@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { supabase } from "@/utils/supabase";
 import { message as msg } from "ant-design-vue";
 
@@ -9,6 +9,10 @@ const description = ref("");
 
 const file = ref(null);
 const fileName = ref(null);
+
+onMounted(() => {
+  fileName.value = "";
+});
 
 const uploadFile = async (event) => {
   file.value = event.target.files[0];
@@ -57,6 +61,8 @@ async function uploadSales() {
       description: description.value,
       picture_main: fileName.value,
       show: true,
+      regist_time: new Date(),
+      count_sales: 0,
     })
     .select();
   data;
@@ -74,8 +80,16 @@ async function uploadSales() {
     <template #cover>
       <a-typography-title :level="2">제품 추가</a-typography-title>
     </template>
-    <a-input placeholder="제품 이름" v-model:value="name" />
-    <a-input placeholder="제품 가격" v-model:value="price" />
+    <a-input
+      placeholder="제품 이름"
+      v-model:value="name"
+      style="margin-bottom: 10px"
+    />
+    <a-input
+      placeholder="제품 가격 (숫자와 쉼표만 입력)"
+      v-model:value="price"
+      style="margin-bottom: 10px"
+    />
     <a-input placeholder="제품 설명" v-model:value="description" />
     <a-typography-title :level="5"
       >메인 제품 사진 ( 반드시 영어로 작성 )</a-typography-title
@@ -89,9 +103,24 @@ async function uploadSales() {
     <a-typography-title :level="5"
       >추가 제품 사진 ( 최대 3장 까지 - 미구현 )</a-typography-title
     >
-    <a-input id="imageInput" type="file" placeholder="서브 사진 1" />
-    <a-input id="imageInput" type="file" placeholder="서브 사진 2" />
-    <a-input id="imageInput" type="file" placeholder="서브 사진 3" />
+    <a-input
+      id="imageInput"
+      type="file"
+      placeholder="서브 사진 1"
+      style="margin-bottom: 10px"
+    />
+    <a-input
+      id="imageInput"
+      type="file"
+      placeholder="서브 사진 2"
+      style="margin-bottom: 10px"
+    />
+    <a-input
+      id="imageInput"
+      type="file"
+      placeholder="서브 사진 3"
+      style="margin-bottom: 10px"
+    />
     <a-button @click="uploadSales">업로드</a-button>
   </a-card>
 </template>
