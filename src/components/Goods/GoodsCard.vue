@@ -1,11 +1,16 @@
 <script setup>
 import { PlusCircleFilled } from "@ant-design/icons-vue";
 import { defineProps, onMounted, ref } from "vue";
+import { router } from "@/router";
 
 const props = defineProps({
   // toRefs를 이용하여 reactive 프로퍼티를 unwrap
   data: Object,
 });
+
+const moveToDetail = () => {
+  router.push({ name: "goods-detail", params: { id: props.data.id } });
+};
 
 onMounted(async () => {
   console.log(props.data);
@@ -25,7 +30,6 @@ const imagePath = ref(
       max-width: 500px;
       min-width: 500px;
     "
-    v-show="data.show"
   >
     <template #cover>
       <img alt="example" :src="imagePath" style="height: 300px" />
@@ -37,7 +41,10 @@ const imagePath = ref(
         <a-typography-title :level="5">{{
           data.description
         }}</a-typography-title>
-        <PlusCircleFilled style="font-size: 50px; margin-top: 20px" />
+        <PlusCircleFilled
+          style="font-size: 50px; margin-top: 20px"
+          @click="moveToDetail"
+        />
       </template>
     </a-card-meta>
   </a-card>

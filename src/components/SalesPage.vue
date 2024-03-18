@@ -1,12 +1,10 @@
 <script setup>
 import { reactive, ref, onMounted, watch } from "vue";
 import { pageConfig } from "@/store";
-import SampleOne from "@/components/Goods/SampleOne.vue";
+import GoodsCard from "@/components/Goods/GoodsCard.vue";
 import { supabase } from "@/utils/supabase";
 
 const store = pageConfig();
-
-const pageSize = 7;
 
 const pagination = ref(6);
 
@@ -49,8 +47,12 @@ async function getGoodsList() {
   const { data, error } = await supabase
     .from("sales")
     .select()
-    .limit(pageSize)
-    .range((current.value - 1) * pageSize, current.value * pageSize - 1);
+    .filter("show", "eq", true)
+    .limit(pagination.value)
+    .range(
+      (current.value - 1) * pagination.value,
+      current.value * pagination.value - 1
+    );
   goods.list = data;
   console.log(goods.list);
   error;
@@ -61,7 +63,11 @@ async function sortGoodsList(event) {
   const { data } = await supabase
     .from("sales")
     .select()
-    .range((current.value - 1) * pageSize, current.value * pageSize - 1);
+    .filter("show", "eq", true)
+    .range(
+      (current.value - 1) * pagination.value,
+      current.value * pagination.value - 1
+    );
   let sortedArray;
   if (event === "랭킹순") {
     getGoodsList();
@@ -103,7 +109,7 @@ async function sortGoodsList(event) {
   />
   <a-divider style="height: 1px; background-color: #000000" />
   <div style="display: flex; flex-wrap: wrap; justify-content: center">
-    <SampleOne
+    <GoodsCard
       v-for="value in goods.list"
       :key="value.id"
       :data="value"

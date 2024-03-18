@@ -24,22 +24,22 @@ const backToMain = () => {
 };
 const movePage = (key) => {
   if (key === 1) {
-    router.push("character");
+    router.push("/character");
     selectedKeys.value = ["1"];
   } else if (key === 2) {
-    router.push("world");
+    router.push("/world");
     selectedKeys.value = ["2"];
   } else if (key === 3) {
-    router.push("episode");
+    router.push("/episode");
     selectedKeys.value = ["3"];
   } else if (key === 4) {
-    router.push("author");
+    router.push("/author");
     selectedKeys.value = ["4"];
   } else if (key === 5) {
-    router.push("sales");
+    router.push("/sales");
     selectedKeys.value = ["5"];
   } else if (key === 6) {
-    router.push("contect");
+    router.push("/contect");
     selectedKeys.value = ["6"];
   }
 };
