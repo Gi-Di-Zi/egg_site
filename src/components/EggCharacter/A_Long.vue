@@ -1,10 +1,6 @@
 <script setup></script>
 
 <template>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-    rel="stylesheet"
-  />
   <a-card :body-style="{ padding: 20, width: '100%' }">
     <a-flex class="charaExplain">
       <a-flex>
@@ -20,7 +16,7 @@
         vertical
         justify="flex-start"
         align="flex-start"
-        style="margin-left: 30px"
+        style="margin-left: 50px"
       >
         <a-typography-title :level="2"> “어... 이게 뭐지?” </a-typography-title>
 
@@ -41,29 +37,20 @@
 
         <a-typography-title :level="4">[ 캐릭터 소개 ]</a-typography-title>
         <p />
-        <a-typography-paragraph
-          class="typoSytle"
-          style="font-family: 'Nanum Gothic', sans-serif"
-        >
+        <a-typography-paragraph class="typoSytle">
           가족이야기와 알 시리즈의 주인공.
         </a-typography-paragraph>
-        <a-typography-paragraph
-          class="typoSytle"
-          style="font-family: 'Nanum Gothic', sans-serif"
-        >
+        <a-typography-paragraph class="typoSytle">
           점 3개로 이루어진 맹한 얼굴이 특징이며 어리숙하고 소심하지만 항상
           열심히 일하며 착하고 호기심 많은 성격이다.
         </a-typography-paragraph>
-        <a-typography-paragraph
-          class="typoSytle"
-          style="font-family: 'Nanum Gothic', sans-serif"
-        >
+        <a-typography-paragraph class="typoSytle">
           항상 다양한 사건사고에 휘말린다.
         </a-typography-paragraph>
       </a-flex>
     </a-flex>
     <a-typography-title :level="4" style="text-align: start" class="typoMargin"
-      >[ 행동 ]</a-typography-title
+      >[ 응용 동작 ]</a-typography-title
     >
     <div style="display: flex; justify-content: center">
       <img
@@ -74,7 +61,7 @@
       />
     </div>
     <a-typography-title :level="4" style="text-align: start" class="typoMargin"
-      >[ 턴어라운드 ]</a-typography-title
+      >[ 턴 어라운드 ]</a-typography-title
     >
     <div style="display: flex; justify-content: center">
       <img

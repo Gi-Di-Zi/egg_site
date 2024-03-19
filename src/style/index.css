@@ -1,9 +1,14 @@
+@font-face {
+    font-family: 'MyCustomFont'; /* 이 이름은 나중에 사용하게 됩니다 */
+    src: url("../images/SUIT-Medium.ttf"); /* 여기서 'path/to/font/file.ttf'는 실제 업로드한 폰트 파일의 경로를 사용해야 합니다 */
+}
+
 body {
     overflow-y: scroll;
 }
 
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Avenir, Helvetica, Arial, MyCustomFont sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -13,6 +18,22 @@ body {
     overflow-x: auto !important;
 
 }
+.ant-typography {
+    font-family: MyCustomFont sans-serif !important;
+}
+.ant-menu {
+    font-family: MyCustomFont sans-serif !important;
+}
+.ant-breadcrumb {
+    font-family: MyCustomFont sans-serif !important;
+}
+.ant-layout {
+    font-family: MyCustomFont sans-serif !important;
+}
+.ant-btn {
+    font-family: MyCustomFont sans-serif !important;
+}
+
 img {
     display: block;
 }
@@ -25,7 +46,7 @@ img {
 }
 
 .typoMargin {
-    margin-left: 300px;
+    margin-left: 320px;
 }
 
 .turnaroundImage {
@@ -45,7 +66,7 @@ img {
     }
 
     .typoMargin {
-        margin-left: 30px;
+        margin-left: 50px;
     }
 }
 
