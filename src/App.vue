@@ -73,7 +73,7 @@ const cancelModal = () => {
     >
       <div class="logo">
         <img
-          src="./images/along1.png"
+          src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/group/group_profile.png?t=2024-03-19T07%3A17%3A08.212Z"
           style="height: 64px; margin-right: 30px"
           alt="oops!"
           @click="backToMain"
