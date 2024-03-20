@@ -75,7 +75,7 @@
     <div style="display: flex; justify-content: center">
       <img
         alt="turnaround"
-        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_ln/aln_application.png?t=2024-03-20T04%3A30%3A39.998Z"
+        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_ln/aln_turnaround.png?t=2024-03-20T05%3A40%3A51.351Z"
         class="turnaroundImage"
       />
     </div>
