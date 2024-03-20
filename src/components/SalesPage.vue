@@ -111,6 +111,7 @@ async function sortGoodsList(event) {
     :options="data"
     size="large"
     style="width: 443px; margin-top: 30px"
+    class="segmented"
     @change="sortGoodsList"
   />
   <a-divider style="height: 1px; background-color: #000000" />

@@ -33,6 +33,10 @@ body {
 .ant-btn {
     font-family: MyCustomFont sans-serif !important;
 }
+.ant-segmented {
+    font-family: MyCustomFont sans-serif !important;
+}
+
 
 img {
     display: block;
@@ -45,8 +49,17 @@ img {
     object-fit: contain;
 }
 
+.charaImageAln {
+    width: 220px;
+    object-fit: contain;
+}
+
 .typoMargin {
     margin-left: 320px;
+}
+
+.typoMarginAln {
+    margin-left: 270px;
 }
 
 .turnaroundImage {
@@ -68,6 +81,10 @@ img {
     .typoMargin {
         margin-left: 50px;
     }
+
+    .typoMarginAln {
+        margin-left: 50px;
+    }
 }
 
 @media screen and (max-width: 1120px) {
@@ -87,11 +104,34 @@ img {
     .charaImage {
         width: 150px;
     }
+    .charaImageAln {
+        width: 120px;
+    }
+    .logo {
+        display: none;
+    }
 
 }
 
 @media screen and (max-width: 700px) {
     .charaImage {
         width: 100px;
+    }
+    .charaImageAln {
+        width: 90px;
+    }
+    .segmented {
+        width: 340px !important;
+    }
+    .ant-segmented-item-label {
+        font-size: 11px !important;
+    }
+    .goodsCard {
+        min-width: 350px !important;
+        mix-width: 350px !important;
+    }
+
+    .header {
+        display: block !important;
     }
 }

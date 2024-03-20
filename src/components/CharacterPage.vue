@@ -1,6 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import ALong from "./EggCharacter/A_Long.vue";
+import AMong from "./EggCharacter/A_Mong.vue";
+import ALn from "./EggCharacter/A_Ln.vue";
+import DolDol from "./EggCharacter/DolDol.vue";
+import AR from "./EggCharacter/A_R.vue";
 import { pageConfig } from "@/store";
 import {
   userOutlined,
@@ -62,10 +66,12 @@ const showCharacter = (key) => {
             알의 가족
           </span>
         </template>
-        <a-menu-item key="5">돌돌이</a-menu-item>
-        <a-menu-item key="6">xxx</a-menu-item>
-        <a-menu-item key="7">xxx</a-menu-item>
-        <a-menu-item key="8">xxx</a-menu-item>
+        <a-menu-item key="5" @click="() => showCharacter(5)"
+          >돌돌이</a-menu-item
+        >
+        <a-menu-item key="6" @click="() => showCharacter(6)">아리</a-menu-item>
+        <a-menu-item key="7" @click="() => showCharacter(7)">xxx</a-menu-item>
+        <a-menu-item key="8" @click="() => showCharacter(8)">xxx</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub3">
         <template #title>
@@ -74,10 +80,16 @@ const showCharacter = (key) => {
             기타
           </span>
         </template>
-        <a-menu-item key="9">고양이 종족</a-menu-item>
-        <a-menu-item key="10">고양이 아님 종족</a-menu-item>
-        <a-menu-item key="11">엑스트라</a-menu-item>
-        <a-menu-item key="12">xxx</a-menu-item>
+        <a-menu-item key="9" @click="() => showCharacter(9)"
+          >고양이 종족</a-menu-item
+        >
+        <a-menu-item key="10" @click="() => showCharacter(10)"
+          >고양이 아님 종족</a-menu-item
+        >
+        <a-menu-item key="11" @click="() => showCharacter(11)"
+          >엑스트라</a-menu-item
+        >
+        <a-menu-item key="12" @click="() => showCharacter(12)">xxx</a-menu-item>
       </a-sub-menu>
     </a-menu>
   </a-layout-sider>
@@ -119,10 +131,12 @@ const showCharacter = (key) => {
             알의 가족
           </span>
         </template>
-        <a-menu-item key="5">돌돌이</a-menu-item>
-        <a-menu-item key="6">xxx</a-menu-item>
-        <a-menu-item key="7">xxx</a-menu-item>
-        <a-menu-item key="8">xxx</a-menu-item>
+        <a-menu-item key="5" @click="() => showCharacter(5)"
+          >돌돌이</a-menu-item
+        >
+        <a-menu-item key="6" @click="() => showCharacter(6)">아리</a-menu-item>
+        <a-menu-item key="7" @click="() => showCharacter(7)">xxx</a-menu-item>
+        <a-menu-item key="8" @click="() => showCharacter(8)">xxx</a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="sub5">
         <template #title>
@@ -131,10 +145,16 @@ const showCharacter = (key) => {
             기타
           </span>
         </template>
-        <a-menu-item key="9">고양이 종족</a-menu-item>
-        <a-menu-item key="10">고양이 아님 종족</a-menu-item>
-        <a-menu-item key="11">엑스트라</a-menu-item>
-        <a-menu-item key="12">xxx</a-menu-item>
+        <a-menu-item key="9" @click="() => showCharacter(9)"
+          >고양이 종족</a-menu-item
+        >
+        <a-menu-item key="10" @click="() => showCharacter(10)"
+          >고양이 아님 종족</a-menu-item
+        >
+        <a-menu-item key="11" @click="() => showCharacter(11)"
+          >엑스트라</a-menu-item
+        >
+        <a-menu-item key="12" @click="() => showCharacter(12)">xxx</a-menu-item>
       </a-sub-menu>
     </a-menu>
   </a-layout-header>
@@ -143,13 +163,20 @@ const showCharacter = (key) => {
     <div v-if="selectedKey === '1'">
       <ALong />
     </div>
-    <div v-if="selectedKey === '2'">
-      <EggSecond />
+    <div v-else-if="selectedKey === '2'">
+      <AMong />
     </div>
-    <div v-if="selectedKey !== '1'">
+    <div v-else-if="selectedKey === '3'">
+      <ALn />
+    </div>
+    <div v-else-if="selectedKey === '5'">
+      <DolDol />
+    </div>
+    <div v-else-if="selectedKey === '6'">
+      <AR />
+    </div>
+    <div v-else-if="selectedKey === '0'">
       <a-typography-title :level="2">캐릭터</a-typography-title>
     </div>
   </a-layout-content>
 </template>
-
-<style></style>

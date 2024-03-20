@@ -30,6 +30,7 @@ const imagePath = ref(
       max-width: 500px;
       min-width: 500px;
     "
+    class="goodsCard"
   >
     <template #cover>
       <img alt="example" :src="imagePath" style="height: 300px" />

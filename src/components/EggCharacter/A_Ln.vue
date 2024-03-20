@@ -7,8 +7,8 @@
         <img
           alt="profile"
           id="mainImage"
-          src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along_profile.png"
-          class="charaImage"
+          src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_ln/aln_profile.png"
+          class="charaImageAln"
         />
       </a-flex>
 
@@ -18,55 +18,64 @@
         align="flex-start"
         style="margin-left: 50px"
       >
-        <a-typography-title :level="2"> “어... 이게 뭐지?” </a-typography-title>
+        <a-typography-title :level="2">
+          “무슨 일 있으면 형한테 말해.”
+        </a-typography-title>
 
         <a-typography-title :level="4">
-          <span style="margin-right: 15px">이름 : 아롱이 (알 종족)</span> |
+          <span style="margin-right: 15px">이름 : 아릉이 (알 종족)</span> |
           <span style="margin-left: 15px; margin-right: 15px"
-            >생일 : 3월 26일
+            >생일 : 10월 23일
           </span>
           |
           <span style="margin-left: 15px; margin-right: 15px"
-            >성격 : 어리숙함</span
+            >성격 : 상남자, 츤데레</span
           >
           |
           <span style="margin-left: 15px"
-            >소속 : 감자시티 대기업 인턴, 조명가게 알바생</span
+            >특이사항 : 모든 옷이 작아서 불만이다.</span
           >
         </a-typography-title>
 
         <a-typography-title :level="4">[ 캐릭터 소개 ]</a-typography-title>
         <p />
         <a-typography-paragraph class="typoSytle">
-          가족이야기와 알 시리즈의 주인공.
+          아롱이 (알) 의 친한 형.
         </a-typography-paragraph>
         <a-typography-paragraph class="typoSytle">
-          점 3개로 이루어진 맹한 얼굴이 특징이며 어리숙하고 소심하지만 항상
-          열심히 일하며 착하고 호기심 많은 성격이다.
+          아롱이와 같이 어릴 때부터 고양이 종족한테 자주 쫒겨 강해지는 것을
+          목표로 삼고 있다.
         </a-typography-paragraph>
         <a-typography-paragraph class="typoSytle">
-          항상 다양한 사건사고에 휘말린다.
+          고양이 종족이 가장 먹기 좋은 사이즈와 형태를 가지고 있으며 고양이 종족
+          사이에서는 가장 맛있을 거 같은 알로 선정되었다.
         </a-typography-paragraph>
       </a-flex>
     </a-flex>
-    <a-typography-title :level="4" style="text-align: start" class="typoMargin"
+    <a-typography-title
+      :level="4"
+      style="text-align: start"
+      class="typoMarginAln"
       >[ 응용 동작 ]</a-typography-title
     >
     <div style="display: flex; justify-content: center">
       <img
         alt="application"
         id="turnaroundImage"
-        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along_application.png?t=2024-03-19T07%3A33%3A40.050Z"
+        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_ln/aln_application.png?t=2024-03-20T04%3A30%3A39.998Z"
         class="turnaroundImage"
       />
     </div>
-    <a-typography-title :level="4" style="text-align: start" class="typoMargin"
+    <a-typography-title
+      :level="4"
+      style="text-align: start"
+      class="typoMarginAln"
       >[ 턴 어라운드 ]</a-typography-title
     >
     <div style="display: flex; justify-content: center">
       <img
         alt="turnaround"
-        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_long/along_turnaround_2.png?t=2024-03-19T07%3A47%3A13.971Z"
+        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_ln/aln_application.png?t=2024-03-20T04%3A30%3A39.998Z"
         class="turnaroundImage"
       />
     </div>

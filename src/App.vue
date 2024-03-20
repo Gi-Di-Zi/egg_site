@@ -69,7 +69,7 @@ const cancelModal = () => {
   <a-layout>
     <a-layout-header
       class="header"
-      style="display: inline-flex; margin-left: 50px; margin-right: 50px"
+      style="display: flex; justify-content: start"
     >
       <div class="logo">
         <img
