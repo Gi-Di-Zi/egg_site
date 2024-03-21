@@ -10,6 +10,7 @@ import ContectPage from "@/components/ContectPage.vue";
 import AdminPage from "@/components/AdminPage.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
 import GoodsDetail from "@/components/Goods/GoodsDetail.vue";
+import GamePage from "@/components/GamePage.vue";
 
 const routes = [
   { path: "/character", name: "character-page", component: CharacterPage },
@@ -19,6 +20,7 @@ const routes = [
   { path: "/sales", name: "sales-page", component: SalesPage },
   { path: "/sales/:id", name: "goods-detail", component: GoodsDetail },
   { path: "/contect", name: "contect-page", component: ContectPage },
+  { path: "/game", name: "game-page", component: GamePage },
   { path: "/", name: "main-page", component: MainPage },
   {
     path: "/admin",

@@ -39,8 +39,11 @@ const movePage = (key) => {
     router.push("/sales");
     selectedKeys.value = ["5"];
   } else if (key === 6) {
-    router.push("/contect");
+    router.push("/game");
     selectedKeys.value = ["6"];
+  } else if (key === 7) {
+    router.push("/contect");
+    selectedKeys.value = ["7"];
   }
 };
 
@@ -69,7 +72,7 @@ const cancelModal = () => {
   <a-layout>
     <a-layout-header
       class="header"
-      style="display: flex; justify-content: start"
+      style="display: flex; justify-content: start; width: 100%"
     >
       <div class="logo">
         <img
@@ -84,13 +87,15 @@ const cancelModal = () => {
         mode="horizontal"
         v-model:selected-keys="selectedKeys"
         class="headerMenu"
+        style="flex-grow: 1"
       >
         <a-menu-item key="1" @click="() => movePage(1)">캐릭터</a-menu-item>
         <a-menu-item key="2" @click="() => movePage(2)">세계관</a-menu-item>
         <a-menu-item key="3" @click="() => movePage(3)">에피소드</a-menu-item>
         <a-menu-item key="4" @click="() => movePage(4)">작가진</a-menu-item>
         <a-menu-item key="5" @click="() => movePage(5)">Goods</a-menu-item>
-        <a-menu-item key="6" @click="() => movePage(6)">Contect</a-menu-item>
+        <a-menu-item key="6" @click="() => movePage(6)">mini-game</a-menu-item>
+        <a-menu-item key="7" @click="() => movePage(7)">Contect</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">

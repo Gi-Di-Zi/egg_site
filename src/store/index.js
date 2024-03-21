@@ -17,8 +17,10 @@ export const pageConfig = defineStore("pageConfig", () => {
       state.selectedKey = ["4"];
     } else if (newPage === "Goods" || newPage === "Goods (상세 페이지)") {
       state.selectedKey = ["5"];
-    } else if (newPage === "Contect") {
+    } else if (newPage === "미니게임") {
       state.selectedKey = ["6"];
+    } else if (newPage === "Contect") {
+      state.selectedKey = ["7"];
     } else if (newPage === "" || newPage === "관리자") {
       state.selectedKey = ["0"];
     }
