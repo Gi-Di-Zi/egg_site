@@ -4,12 +4,19 @@ import { pageConfig } from "@/store";
 
 const store = pageConfig();
 
+const imageSource = ref(require("@/images/along1.png"));
+
 const isShaking = ref(false);
 function shakeIt() {
+  imageSource.value = require("@/images/test.gif");
+
   isShaking.value = true;
   setTimeout(() => {
     isShaking.value = false;
   }, 500);
+}
+function stopShakeIt() {
+  imageSource.value = require("@/images/along1.png");
 }
 const { changePage } = store;
 
@@ -21,10 +28,10 @@ onMounted(() => {
 <template>
   <a-typography-title :level="2">미니게임</a-typography-title>
   <img
-    src="@/images/along1.png"
+    :src="imageSource"
     style="width: 400px; object-fit: contain"
-    @click="shakeIt"
-    :class="{ 'shake-animation': isShaking }"
+    @mouseover="shakeIt"
+    @mouseout="stopShakeIt"
   />
 </template>
 
