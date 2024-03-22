@@ -29,10 +29,12 @@ const { changePage } = store;
 
 // 애니메이션 멈추기
 const pauseAnimation = () => {
+  imageSource2.value = require("@/images/test2.gif");
   timeline.pause();
 };
 // 애니메이션 재시작
 const resumeAnimation = () => {
+  imageSource2.value = require("@/images/along1.png");
   timeline.resume();
 };
 
