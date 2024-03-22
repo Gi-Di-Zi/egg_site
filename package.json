@@ -12,6 +12,7 @@
     "@supabase/supabase-js": "^2.39.8",
     "ant-design-vue": "^4.1.2",
     "core-js": "^3.8.3",
+    "gsap": "^3.12.5",
     "pinia": "^2.1.7",
     "vue": "^3.2.13",
     "vue-router": "^4.3.0"
