@@ -25,6 +25,18 @@ const stopVideo = () => {
 const stopVideo2 = () => {
   isModalVisible2.value = false;
 };
+const itemTag = (type) => {
+  switch (type) {
+    case "image":
+      return "그림";
+    case "video":
+      return "유튜브 영상";
+    case "cartoon":
+      return "4컷 만화";
+    default:
+      return "기타";
+  }
+};
 
 const imageSources = [
   {
@@ -32,84 +44,72 @@ const imageSources = [
     url: require("@/images/along1.png"),
     title: "1",
     description: "11",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/along2.png"),
     title: "2",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/test.gif"),
     title: "3",
     description: "33",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/test2.gif"),
     title: "4",
     description: "44",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/along1.png"),
     title: "5",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/along2.png"),
     title: "6",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/test.gif"),
     title: "7",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/test2.gif"),
     title: "8",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/test2.gif"),
     title: "9",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/test2.gif"),
     title: "10",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/along2.png"),
     title: "11",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "image",
     url: require("@/images/along2.png"),
     title: "12",
     description: "22",
-    tag: "4컷 만화",
   },
   {
     type: "video",
@@ -117,7 +117,6 @@ const imageSources = [
     imageUrl: require("@/images/along2.png"),
     title: "13",
     description: "22",
-    tag: "유튜브 영상",
   },
 ];
 
@@ -205,7 +204,7 @@ onMounted(() => {
               @click="openVideoModal(index)"
             />
             <p class="hover-text" :key="index" v-show="showText[index]">
-              {{ imageSources[index]["tag"] }}
+              {{ itemTag(imageSources[index].type) }}
             </p>
           </div>
         </template>
