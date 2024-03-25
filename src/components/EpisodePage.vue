@@ -3,18 +3,28 @@ import { ref, onMounted, onUnmounted, computed } from "vue";
 import { pageConfig } from "@/store";
 
 let isModalVisible = ref(false);
+let isModalVisible2 = ref(false);
 let currentVideoUrl = ref(null);
 
 const openVideoModal = (index) => {
   if (imageSources[index]["type"] === "video") {
     currentVideoUrl.value = imageSources[index]["url"];
     isModalVisible.value = true;
+    isModalVisible2.value = true;
   }
 };
 
 const store = pageConfig();
 const { changePage } = store;
 let screenWidth = ref(window.innerWidth);
+
+const stopVideo = () => {
+  isModalVisible.value = false;
+};
+
+const stopVideo2 = () => {
+  isModalVisible2.value = false;
+};
 
 const imageSources = [
   {
@@ -207,12 +217,19 @@ onMounted(() => {
       </a-card>
     </a-col>
   </a-row>
-  <a-modal v-model:visible="isModalVisible" width="1024px" :footer="null">
+  <a-modal
+    v-if="isModalVisible2"
+    v-model:visible="isModalVisible"
+    width="1024px"
+    :footer="null"
+    @close="stopVideo"
+    :afterClose="stopVideo2"
+  >
     <iframe
       width="100%"
       height="600px"
-      :src="currentVideoUrl"
-      frameborder="0"
+      :src="currentVideoUrl + '?autoplay=1'"
+      allow="autoplay"
     ></iframe>
   </a-modal>
 </template>
