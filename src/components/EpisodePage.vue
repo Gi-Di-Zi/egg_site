@@ -2,28 +2,117 @@
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { pageConfig } from "@/store";
 
+let isModalVisible = ref(false);
+let currentVideoUrl = ref(null);
+
+const openVideoModal = (index) => {
+  if (imageSources[index]["type"] === "video") {
+    currentVideoUrl.value = imageSources[index]["url"];
+    isModalVisible.value = true;
+  }
+};
+
 const store = pageConfig();
 const { changePage } = store;
 let screenWidth = ref(window.innerWidth);
 
 const imageSources = [
-  { type: "image", url: require("@/images/along1.png") },
-  { type: "image", url: require("@/images/along2.png") },
-  { type: "image", url: require("@/images/test.gif") },
-  { type: "image", url: require("@/images/test2.gif") },
-  { type: "image", url: require("@/images/along1.png") },
-  { type: "image", url: require("@/images/along2.png") },
-  { type: "image", url: require("@/images/test.gif") },
-  { type: "image", url: require("@/images/test2.gif") },
-  { type: "image", url: require("@/images/test2.gif") },
-  { type: "image", url: require("@/images/test2.gif") },
-  { type: "image", url: require("@/images/along2.png") },
-  { type: "image", url: require("@/images/along2.png") },
-  { type: "video", url: "https://www.youtube.com/embed/ql3pDQ6O0ME" },
+  {
+    type: "image",
+    url: require("@/images/along1.png"),
+    title: "1",
+    description: "11",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/along2.png"),
+    title: "2",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/test.gif"),
+    title: "3",
+    description: "33",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/test2.gif"),
+    title: "4",
+    description: "44",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/along1.png"),
+    title: "5",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/along2.png"),
+    title: "6",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/test.gif"),
+    title: "7",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/test2.gif"),
+    title: "8",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/test2.gif"),
+    title: "9",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/test2.gif"),
+    title: "10",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/along2.png"),
+    title: "11",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "image",
+    url: require("@/images/along2.png"),
+    title: "12",
+    description: "22",
+    tag: "4컷 만화",
+  },
+  {
+    type: "video",
+    url: "https://www.youtube.com/embed/ql3pDQ6O0ME",
+    imageUrl: require("@/images/along2.png"),
+    title: "13",
+    description: "22",
+    tag: "유튜브 영상",
+  },
 ];
 
 const showText = ref(Array(imageSources.length).fill(false));
-
+const showVideoPreview = ref(Array(imageSources.length).fill(false));
 const getImagesForColumn = (colNumber) => {
   return imageSources
     .map((_, index) => index)
@@ -36,10 +125,16 @@ const handleResize = () => {
 
 const previewType = (index) => {
   showText.value[index] = true;
+  if (imageSources[index]["type"] === "video") {
+    showVideoPreview.value[index] = true;
+  }
 };
 
 const hideType = (index) => {
   showText.value[index] = false;
+  if (imageSources[index]["type"] === "video") {
+    showVideoPreview.value[index] = false;
+  }
 };
 
 onUnmounted(() => {
@@ -80,28 +175,46 @@ onMounted(() => {
           <div
             @mouseover="() => previewType(index)"
             @mouseleave="() => hideType(index)"
-            v-if="imageSources[index]['type'] === 'image'"
           >
-            <a-image alt="example" :src="imageSources[index]['url']" />
+            <a-image
+              alt="example"
+              :src="imageSources[index]['url']"
+              v-if="imageSources[index]['type'] === 'image'"
+            />
+            <img
+              alt="example"
+              :src="imageSources[index]['imageUrl']"
+              v-if="imageSources[index]['type'] === 'video'"
+              style="width: 100%; object-fit: contain"
+            />
+            <img
+              :key="index"
+              src="@/images/youtubePlay.png"
+              v-show="showVideoPreview[index]"
+              class="hover-video"
+              @click="openVideoModal(index)"
+            />
             <p class="hover-text" :key="index" v-show="showText[index]">
-              4컷 만화
+              {{ imageSources[index]["tag"] }}
             </p>
           </div>
-          <iframe
-            v-if="imageSources[index]['type'] === 'video'"
-            height="300"
-            :src="imageSources[index]['url']"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
         </template>
-        <a-card-meta title="Europe Street beat">
-          <template #description>www.instagram.com</template>
+        <a-card-meta :title="imageSources[index]['title']">
+          <template #description>{{
+            imageSources[index]["description"]
+          }}</template>
         </a-card-meta>
       </a-card>
     </a-col>
   </a-row>
+  <a-modal v-model:visible="isModalVisible" width="1024px" :footer="null">
+    <iframe
+      width="100%"
+      height="600px"
+      :src="currentVideoUrl"
+      frameborder="0"
+    ></iframe>
+  </a-modal>
 </template>
 <style scoped>
 .hover-text {
@@ -118,5 +231,14 @@ onMounted(() => {
   background-color: rgb(31, 80, 104);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.hover-video {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 90px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 </style>
