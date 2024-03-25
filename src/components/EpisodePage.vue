@@ -7,18 +7,19 @@ const { changePage } = store;
 let screenWidth = ref(window.innerWidth);
 
 const imageSources = [
-  require("@/images/along1.png"),
-  require("@/images/along2.png"),
-  require("@/images/test.gif"),
-  require("@/images/test2.gif"),
-  require("@/images/along1.png"),
-  require("@/images/along2.png"),
-  require("@/images/test.gif"),
-  require("@/images/test2.gif"),
-  require("@/images/test2.gif"),
-  require("@/images/test2.gif"),
-  require("@/images/along2.png"),
-  require("@/images/along2.png"),
+  { type: "image", url: require("@/images/along1.png") },
+  { type: "image", url: require("@/images/along2.png") },
+  { type: "image", url: require("@/images/test.gif") },
+  { type: "image", url: require("@/images/test2.gif") },
+  { type: "image", url: require("@/images/along1.png") },
+  { type: "image", url: require("@/images/along2.png") },
+  { type: "image", url: require("@/images/test.gif") },
+  { type: "image", url: require("@/images/test2.gif") },
+  { type: "image", url: require("@/images/test2.gif") },
+  { type: "image", url: require("@/images/test2.gif") },
+  { type: "image", url: require("@/images/along2.png") },
+  { type: "image", url: require("@/images/along2.png") },
+  { type: "video", url: "https://www.youtube.com/embed/ql3pDQ6O0ME" },
 ];
 
 const showText = ref(Array(imageSources.length).fill(false));
@@ -79,12 +80,21 @@ onMounted(() => {
           <div
             @mouseover="() => previewType(index)"
             @mouseleave="() => hideType(index)"
+            v-if="imageSources[index]['type'] === 'image'"
           >
-            <a-image alt="example" :src="imageSources[index]" />
+            <a-image alt="example" :src="imageSources[index]['url']" />
             <p class="hover-text" :key="index" v-show="showText[index]">
               4컷 만화
             </p>
           </div>
+          <iframe
+            v-if="imageSources[index]['type'] === 'video'"
+            height="300"
+            :src="imageSources[index]['url']"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </template>
         <a-card-meta title="Europe Street beat">
           <template #description>www.instagram.com</template>
@@ -103,7 +113,7 @@ onMounted(() => {
   font-size: 16px;
   padding: 3px;
   padding-left: 10px;
-  padding-right: 25px;
+  padding-right: 20px;
   text-align: left;
   background-color: rgb(31, 80, 104);
   border-top-right-radius: 20px;
