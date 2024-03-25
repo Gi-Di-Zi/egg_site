@@ -96,16 +96,17 @@ onMounted(() => {
 <style scoped>
 .hover-text {
   position: absolute;
-  top: 10px;
+  bottom: 90px;
   left: 0;
   color: white;
   font-weight: 400;
   font-size: 16px;
-  width: 50%;
-  background-color: rgba(31, 80, 104);
-  padding: 5px;
-  padding-left: 15px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 25px;
   text-align: left;
-  clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
+  background-color: rgb(31, 80, 104);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 </style>
