@@ -7,6 +7,10 @@ const goods = reactive({
   list: [],
 });
 
+const refresh = () => {
+  window.location.reload();
+};
+
 onMounted(() => {
   getSalesList();
 });
@@ -28,7 +32,7 @@ async function getSalesList() {
       :key="index"
       :data="value"
       :index="index"
-      @updateList="getSalesList"
+      @updateList="refresh"
     />
   </a-card>
 </template>

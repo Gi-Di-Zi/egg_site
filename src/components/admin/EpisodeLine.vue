@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineProps, defineEmits } from "vue";
+import { ref, defineProps, defineEmits, watch, onMounted } from "vue";
 import dayjs from "dayjs";
 import { supabase } from "@/utils/supabase";
 import { message as msg } from "ant-design-vue";
@@ -20,8 +20,27 @@ const showSwitch = ref(props.data.show);
 
 const title = ref(props.data.title);
 const type = ref(props.data.type);
+const videoUrl = ref(props.data.videoUrl);
 const salesDescription = ref(props.data.description);
 const createdDate = ref(dayjs(props.data.createdDate));
+
+const mainUrlDisabled = ref(true);
+
+onMounted(() => {
+  if (type.value == "video") {
+    mainUrlDisabled.value = false;
+  } else {
+    mainUrlDisabled.value = true;
+  }
+});
+
+watch(type, () => {
+  if (type.value == "video") {
+    mainUrlDisabled.value = false; // Disable mainUrl input if type is 'image'
+  } else {
+    mainUrlDisabled.value = true; // Enable mainUrl input for other types
+  }
+});
 
 const deleteModalOn = () => {
   deleteModal.value = true;
@@ -85,6 +104,7 @@ async function changeGoods() {
       type: type.value,
       description: salesDescription.value,
       createdDate: createdDate.value,
+      videoUrl: videoUrl.value,
     })
     .eq("id", props.data.id)
     .select();
@@ -169,10 +189,12 @@ async function changeGoods() {
       <a-select-option value="etc">기타</a-select-option>
     </a-select>
     <a-typography-title :level="4">갤러리 이름</a-typography-title>
-    <a-input v-model:value="title"></a-input>
+    <a-input v-model:value="title" />
     <a-typography-title :level="4">갤러리 설명</a-typography-title>
-    <a-input v-model:value="salesDescription"></a-input>
+    <a-input v-model:value="salesDescription" />
     <a-typography-title :level="4">제작 날짜</a-typography-title>
     <a-date-picker v-model:value="createdDate" style="width: 100%" />
+    <a-typography-title :level="4">동영상 링크</a-typography-title>
+    <a-input v-model:value="videoUrl" :disabled="mainUrlDisabled" />
   </a-modal>
 </template>
