@@ -19,6 +19,11 @@ const getEpisodeList = async () => {
   imageSources.value = data;
 };
 
+function formatDate(dateString) {
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+}
+
 const openVideoModal = (index) => {
   if (imageSources.value[index]["type"] === "video") {
     currentVideoUrl.value = imageSources.value[index]["mainUrl"];
@@ -142,9 +147,14 @@ onMounted(() => {
           </div>
         </template>
         <a-card-meta :title="imageSources[index]['title']">
-          <template #description>{{
-            imageSources[index]["description"]
-          }}</template>
+          <template #description>
+            <div class="description">
+              {{ imageSources[index]["description"] }}
+            </div>
+            <p />
+
+            제작 날짜 : {{ formatDate(imageSources[index]["createdDate"]) }}
+          </template>
         </a-card-meta>
       </a-card>
     </a-col>
@@ -189,5 +199,9 @@ onMounted(() => {
   width: 90px;
   transform: translate(-50%, -50%);
   cursor: pointer;
+}
+
+.description {
+  word-wrap: break-word;
 }
 </style>

@@ -58,7 +58,12 @@ watch(type, () => {
 });
 
 async function uploadSales() {
-  if (title.value === "" || mainUrl.value === "" || description.value === "") {
+  if (
+    title.value === "" ||
+    mainUrl.value === "" ||
+    description.value === "" ||
+    createdDate.value === null
+  ) {
     msg.error("채워지지 않은 부분이 있습니다");
     return;
   }
