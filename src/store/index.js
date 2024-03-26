@@ -11,7 +11,7 @@ export const pageConfig = defineStore("pageConfig", () => {
       state.selectedKey = ["1"];
     } else if (newPage === "세계관") {
       state.selectedKey = ["2"];
-    } else if (newPage === "에피소드") {
+    } else if (newPage === "갤러리") {
       state.selectedKey = ["3"];
     } else if (newPage === "작가진") {
       state.selectedKey = ["4"];

@@ -21,7 +21,7 @@ async function getSalesList() {
 <template>
   <a-card style="width: 100%">
     <template #cover>
-      <a-typography-title :level="2">에피소드 변경</a-typography-title>
+      <a-typography-title :level="2">갤러리 변경</a-typography-title>
     </template>
     <EpisodeLine
       v-for="(value, index) in goods.list"

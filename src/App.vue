@@ -91,7 +91,7 @@ const cancelModal = () => {
       >
         <a-menu-item key="1" @click="() => movePage(1)">캐릭터</a-menu-item>
         <a-menu-item key="2" @click="() => movePage(2)">세계관</a-menu-item>
-        <a-menu-item key="3" @click="() => movePage(3)">에피소드</a-menu-item>
+        <a-menu-item key="3" @click="() => movePage(3)">갤러리</a-menu-item>
         <a-menu-item key="4" @click="() => movePage(4)">작가진</a-menu-item>
         <a-menu-item key="5" @click="() => movePage(5)">Goods</a-menu-item>
         <a-menu-item key="6" @click="() => movePage(6)">mini-game</a-menu-item>

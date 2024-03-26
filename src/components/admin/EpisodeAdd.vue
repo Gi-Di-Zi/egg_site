@@ -92,7 +92,7 @@ async function uploadSales() {
 <template>
   <a-card style="width: 100%">
     <template #cover>
-      <a-typography-title :level="2">에피소드 추가</a-typography-title>
+      <a-typography-title :level="2">갤러리 추가</a-typography-title>
     </template>
     <a-select
       v-model:value="type"

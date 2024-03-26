@@ -97,7 +97,7 @@ const colCounts = computed(() => {
 });
 
 onMounted(() => {
-  changePage("에피소드");
+  changePage("갤러리");
   getEpisodeList();
   window.addEventListener("resize", handleResize);
 });

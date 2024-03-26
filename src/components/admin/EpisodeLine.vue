@@ -158,9 +158,9 @@ async function changeGoods() {
     @cancel="cancelChangeModal"
   >
     <template #title>
-      <a-typography-title :level="3">에피소드 정보</a-typography-title>
+      <a-typography-title :level="3">갤러리 정보</a-typography-title>
     </template>
-    <a-typography-title :level="4">에피소드 유형</a-typography-title>
+    <a-typography-title :level="4">갤러리 유형</a-typography-title>
     <a-select
       v-model:value="type"
       placeholder="유형을 선택해주세요"
@@ -171,9 +171,9 @@ async function changeGoods() {
       <a-select-option value="cartoon">4컷 만화</a-select-option>
       <a-select-option value="etc">기타</a-select-option>
     </a-select>
-    <a-typography-title :level="4">에피소드 이름</a-typography-title>
+    <a-typography-title :level="4">갤러리 이름</a-typography-title>
     <a-input v-model:value="title"></a-input>
-    <a-typography-title :level="4">에피소드 설명</a-typography-title>
+    <a-typography-title :level="4">갤러리 설명</a-typography-title>
     <a-input v-model:value="salesDescription"></a-input>
     <a-typography-title :level="4">제작 날짜</a-typography-title>
     <a-date-picker v-model:value="createdDate" style="width: 100%" />

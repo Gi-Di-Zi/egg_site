@@ -23,7 +23,7 @@ const scrollToElement = (elementId) => {
 };
 
 const anchors = ref([
-  { href: "1", title: "에피소드 관리", id: "#episode" },
+  { href: "1", title: "갤러리 관리", id: "#episode" },
   { href: "2", title: "Goods 관리", id: "#sales" },
 ]);
 
@@ -60,7 +60,7 @@ onMounted(() => {
         v-model:activeKey="activeKey"
         :expand-icon-position="expandIconPosition"
       >
-        <a-collapse-panel key="1" header="에피소드 관리" id="episode">
+        <a-collapse-panel key="1" header="갤러리 관리" id="episode">
           <p />
           <a-row>
             <a-col :span="11">
