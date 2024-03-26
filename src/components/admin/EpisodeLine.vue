@@ -119,17 +119,11 @@ async function changeGoods() {
     <a-image
       :src="`${supabaseUrl}/storage/v1/object/public/image/episode/${data.mainUrl}`"
       style="height: 100px"
-      v-if="type !== 'video'"
-    />
-    <a-image
-      :src="`${supabaseUrl}/storage/v1/object/public/image/episode/${data.imageUrl}`"
-      style="height: 100px"
-      v-else
     />
     <iframe
       height="100px"
       width="200px"
-      :src="data.mainUrl"
+      :src="data.videoUrl"
       v-if="type == 'video'"
     />
   </div>
@@ -167,7 +161,10 @@ async function changeGoods() {
       style="width: 100%; margin-bottom: 10px; text-align: start"
     >
       <a-select-option value="image">이미지</a-select-option>
-      <a-select-option value="video">영상</a-select-option>
+      <a-select-option value="emoticon">이모티콘</a-select-option>
+      <a-select-option value="animation">애니메이션</a-select-option>
+      <a-select-option value="continuity">콘티</a-select-option>
+      <a-select-option value="video">동영상</a-select-option>
       <a-select-option value="cartoon">4컷 만화</a-select-option>
       <a-select-option value="etc">기타</a-select-option>
     </a-select>

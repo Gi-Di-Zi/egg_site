@@ -7,7 +7,7 @@ const title = ref("");
 const mainUrl = ref("");
 const type = ref(null);
 const description = ref("");
-const imageUrl = ref("");
+const videoUrl = ref("");
 const createdDate = ref(null);
 
 const file = ref(null);
@@ -41,11 +41,7 @@ const uploadFile = async (event) => {
     }
   } else {
     console.log("Image uploaded successfully!");
-    if (type.value == "video") {
-      imageUrl.value = filePath;
-    } else {
-      mainUrl.value = filePath;
-    }
+    mainUrl.value = filePath;
   }
 };
 
@@ -74,7 +70,7 @@ async function uploadSales() {
       title: title.value,
       mainUrl: mainUrl.value,
       description: description.value,
-      imageUrl: imageUrl.value,
+      videoUrl: videoUrl.value,
       createdDate: createdDate.value,
       show: true,
     })
@@ -84,7 +80,7 @@ async function uploadSales() {
   title.value = "";
   mainUrl.value = "";
   description.value = "";
-  imageUrl.value = "";
+  videoUrl.value = "";
   msg.info("업로드 완료!");
 }
 </script>
@@ -100,7 +96,10 @@ async function uploadSales() {
       style="width: 100%; margin-bottom: 10px; text-align: start"
     >
       <a-select-option value="image">이미지</a-select-option>
-      <a-select-option value="video">영상</a-select-option>
+      <a-select-option value="emoticon">이모티콘</a-select-option>
+      <a-select-option value="animation">애니메이션</a-select-option>
+      <a-select-option value="continuity">콘티</a-select-option>
+      <a-select-option value="video">동영상</a-select-option>
       <a-select-option value="cartoon">4컷 만화</a-select-option>
       <a-select-option value="etc">기타</a-select-option>
     </a-select>
@@ -111,7 +110,7 @@ async function uploadSales() {
     />
     <a-input
       placeholder="영상 링크"
-      v-model:value="mainUrl"
+      v-model:value="videoUrl"
       style="margin-bottom: 10px"
       :disabled="mainUrlDisabled"
     />
@@ -122,7 +121,7 @@ async function uploadSales() {
     />
     <a-date-picker v-model:value="createdDate" style="width: 100%" />
     <a-typography-title :level="5"
-      >메인 사진 or 썸네일용 사진 (유형이 영상일 때)</a-typography-title
+      >메인 사진 or 썸네일용 사진</a-typography-title
     >
     <a-input
       id="imageInput"

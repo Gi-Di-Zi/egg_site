@@ -26,7 +26,7 @@ function formatDate(dateString) {
 
 const openVideoModal = (index) => {
   if (imageSources.value[index]["type"] === "video") {
-    currentVideoUrl.value = imageSources.value[index]["mainUrl"];
+    currentVideoUrl.value = imageSources.value[index]["videoUrl"];
     isModalVisible.value = true;
     isModalVisible2.value = true;
   }
@@ -47,8 +47,14 @@ const itemTag = (type) => {
   switch (type) {
     case "image":
       return "그림";
+    case "emoticon":
+      return "이모티콘";
+    case "animation":
+      return "애니메이션";
+    case "continuity":
+      return "콘티";
     case "video":
-      return "유튜브 영상";
+      return "동영상";
     case "cartoon":
       return "4컷 만화";
     default:
@@ -125,14 +131,7 @@ onMounted(() => {
             <a-image
               alt="example"
               :src="`${supabaseUrl}/storage/v1/object/public/image/episode/${imageSources[index]['mainUrl']}`"
-              v-if="imageSources[index]['type'] === 'image'"
               width="100%"
-            />
-            <img
-              alt="example"
-              :src="`${supabaseUrl}/storage/v1/object/public/image/episode/${imageSources[index]['imageUrl']}`"
-              v-if="imageSources[index]['type'] === 'video'"
-              style="width: 100%; object-fit: contain"
             />
             <img
               :key="index"
@@ -178,7 +177,7 @@ onMounted(() => {
 <style scoped>
 .hover-text {
   position: absolute;
-  bottom: 90px;
+  bottom: 130px;
   left: 0;
   color: white;
   font-weight: 400;
