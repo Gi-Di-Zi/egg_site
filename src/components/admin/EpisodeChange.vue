@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 import { supabase } from "@/utils/supabase";
-import SalesLine from "@/components/admin/SalesLine.vue";
+import EpisodeLine from "@/components/admin/EpisodeLine.vue";
 
 const goods = reactive({
   list: [],
@@ -12,7 +12,7 @@ onMounted(() => {
 });
 
 async function getSalesList() {
-  const { data } = await supabase.from("sales").select();
+  const { data } = await supabase.from("episode").select();
   console.log(data);
   goods.list = data;
 }
@@ -21,9 +21,9 @@ async function getSalesList() {
 <template>
   <a-card style="width: 100%">
     <template #cover>
-      <a-typography-title :level="2">제품 변경</a-typography-title>
+      <a-typography-title :level="2">에피소드 변경</a-typography-title>
     </template>
-    <SalesLine
+    <EpisodeLine
       v-for="(value, index) in goods.list"
       :key="index"
       :data="value"

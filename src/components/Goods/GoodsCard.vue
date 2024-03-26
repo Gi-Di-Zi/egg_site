@@ -17,7 +17,7 @@ onMounted(async () => {
 });
 
 const imagePath = ref(
-  `${process.env.VUE_APP_SUPABASE_URL}/storage/v1/object/public/image/${props.data.picture_main}`
+  `${process.env.VUE_APP_SUPABASE_URL}/storage/v1/object/public/image/sales/${props.data.picture_main}`
 );
 </script>
 

@@ -1,14 +1,27 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { pageConfig } from "@/store";
+import { supabase } from "@/utils/supabase";
 
 let isModalVisible = ref(false);
 let isModalVisible2 = ref(false);
 let currentVideoUrl = ref(null);
 
+const supabaseUrl = process.env.VUE_APP_SUPABASE_URL;
+
+const imageSources = ref([]);
+
+const getEpisodeList = async () => {
+  const { data } = await supabase
+    .from("episode")
+    .select()
+    .filter("show", "eq", true);
+  imageSources.value = data;
+};
+
 const openVideoModal = (index) => {
-  if (imageSources[index]["type"] === "video") {
-    currentVideoUrl.value = imageSources[index]["url"];
+  if (imageSources.value[index]["type"] === "video") {
+    currentVideoUrl.value = imageSources.value[index]["mainUrl"];
     isModalVisible.value = true;
     isModalVisible2.value = true;
   }
@@ -38,92 +51,10 @@ const itemTag = (type) => {
   }
 };
 
-const imageSources = [
-  {
-    type: "image",
-    url: require("@/images/along1.png"),
-    title: "1",
-    description: "11",
-  },
-  {
-    type: "image",
-    url: require("@/images/along2.png"),
-    title: "2",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/test.gif"),
-    title: "3",
-    description: "33",
-  },
-  {
-    type: "image",
-    url: require("@/images/test2.gif"),
-    title: "4",
-    description: "44",
-  },
-  {
-    type: "image",
-    url: require("@/images/along1.png"),
-    title: "5",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/along2.png"),
-    title: "6",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/test.gif"),
-    title: "7",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/test2.gif"),
-    title: "8",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/test2.gif"),
-    title: "9",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/test2.gif"),
-    title: "10",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/along2.png"),
-    title: "11",
-    description: "22",
-  },
-  {
-    type: "image",
-    url: require("@/images/along2.png"),
-    title: "12",
-    description: "22",
-  },
-  {
-    type: "video",
-    url: "https://www.youtube.com/embed/ql3pDQ6O0ME",
-    imageUrl: require("@/images/along2.png"),
-    title: "13",
-    description: "22",
-  },
-];
-
-const showText = ref(Array(imageSources.length).fill(false));
-const showVideoPreview = ref(Array(imageSources.length).fill(false));
+const showText = ref(Array(imageSources.value.length).fill(false));
+const showVideoPreview = ref(Array(imageSources.value.length).fill(false));
 const getImagesForColumn = (colNumber) => {
-  return imageSources
+  return imageSources.value
     .map((_, index) => index)
     .filter((index) => index % colCounts.value === colNumber - 1);
 };
@@ -134,14 +65,14 @@ const handleResize = () => {
 
 const previewType = (index) => {
   showText.value[index] = true;
-  if (imageSources[index]["type"] === "video") {
+  if (imageSources.value[index]["type"] === "video") {
     showVideoPreview.value[index] = true;
   }
 };
 
 const hideType = (index) => {
   showText.value[index] = false;
-  if (imageSources[index]["type"] === "video") {
+  if (imageSources.value[index]["type"] === "video") {
     showVideoPreview.value[index] = false;
   }
 };
@@ -162,6 +93,7 @@ const colCounts = computed(() => {
 
 onMounted(() => {
   changePage("에피소드");
+  getEpisodeList();
   window.addEventListener("resize", handleResize);
 });
 </script>
@@ -178,7 +110,7 @@ onMounted(() => {
         v-for="index in getImagesForColumn(n)"
         :src="imageSources[index]"
         :key="`img-${index}`"
-        style="width: 100%; object-fit: contain"
+        style="width: 100%"
       >
         <template #cover>
           <div
@@ -187,12 +119,13 @@ onMounted(() => {
           >
             <a-image
               alt="example"
-              :src="imageSources[index]['url']"
+              :src="`${supabaseUrl}/storage/v1/object/public/image/episode/${imageSources[index]['mainUrl']}`"
               v-if="imageSources[index]['type'] === 'image'"
+              width="100%"
             />
             <img
               alt="example"
-              :src="imageSources[index]['imageUrl']"
+              :src="`${supabaseUrl}/storage/v1/object/public/image/episode/${imageSources[index]['imageUrl']}`"
               v-if="imageSources[index]['type'] === 'video'"
               style="width: 100%; object-fit: contain"
             />

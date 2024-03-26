@@ -76,7 +76,7 @@ async function uploadSales() {
 </script>
 
 <template>
-  <a-card style="width: 800px; display: block">
+  <a-card style="width: 100%">
     <template #cover>
       <a-typography-title :level="2">제품 추가</a-typography-title>
     </template>

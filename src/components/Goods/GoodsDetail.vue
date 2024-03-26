@@ -39,7 +39,7 @@ async function getGoods(id) {
   const { data } = await supabase.from("sales").select().eq("id", id);
   console.log(data);
   goods.value = data[0];
-  imagePath.value = `${process.env.VUE_APP_SUPABASE_URL}/storage/v1/object/public/image/${data[0]["picture_main"]}`;
+  imagePath.value = `${process.env.VUE_APP_SUPABASE_URL}/storage/v1/object/public/image/sales/${data[0]["picture_main"]}`;
   loading.value = false;
 }
 </script>

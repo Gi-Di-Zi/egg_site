@@ -8,6 +8,8 @@ const props = defineProps({
   index: Number,
 });
 
+const supabaseUrl = process.env.VUE_APP_SUPABASE_URL;
+
 const emit = defineEmits(["updateList"]);
 
 const deleteModal = ref(false);
@@ -98,19 +100,30 @@ async function changeGoods() {
   <div style="display: flex; align-items: center">
     <a-typography-title :level="3">{{ index + 1 }}.</a-typography-title>
     <a-typography-title :level="4">{{ data.name }}</a-typography-title>
-    <a-typography-title :level="4" style="margin-left: 20px"
-      >/ 활성</a-typography-title
-    >
     <a-switch
       v-model:checked="showSwitch"
-      style="margin-left: 10px; margin-top: 10px"
+      style="margin-left: 10px; margin-top: 15px"
       @change="showChange"
     ></a-switch>
   </div>
-  <div style="display: flex; align-items: center">
-    <a-button @click="changeModalOn">변경</a-button>
-    <a-button @click="deleteModalOn">삭제</a-button>
+  <div
+    style="
+      display: flex;
+      justify-content: start;
+      margin: 5px;
+      margin-bottom: 10px;
+    "
+  >
+    <a-image
+      :src="`${supabaseUrl}/storage/v1/object/public/image/sales/${data.picture_main}`"
+      style="height: 100px"
+    />
   </div>
+  <div style="display: flex; align-items: center">
+    <a-button @click="changeModalOn" style="margin: 5px">변경</a-button>
+    <a-button @click="deleteModalOn" style="margin: 5px">삭제</a-button>
+  </div>
+  <a-divider style="margin: 10px; border-color: #2c3e50" dashed />
 
   <a-modal
     :open="deleteModal"
