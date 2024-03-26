@@ -19,9 +19,9 @@ onMounted(() => {});
 const uploadFile = async (event) => {
   file.value = event.target.files[0];
 
-  const acceptedImageTypes = ["image/jpeg", "image/png"];
+  const acceptedImageTypes = ["image/jpeg", "image/png", "image/gif"];
   if (!acceptedImageTypes.includes(file.value.type)) {
-    msg.error("jpg 또는 png로만 업로드가 가능합니다!");
+    msg.error("jpg, png, 또는 gif로만 업로드가 가능합니다!");
     return;
   }
 
@@ -30,7 +30,7 @@ const uploadFile = async (event) => {
 
   const { error } = await supabase.storage
     .from("image")
-    .upload(filePath, file.value);
+    .upload("episode/" + filePath, file.value);
 
   if (error) {
     console.error("Error uploading image: ", error);

@@ -29,7 +29,7 @@ const uploadFile = async (event) => {
 
   const { error } = await supabase.storage
     .from("image")
-    .upload(filePath, file.value);
+    .upload("sales/" + filePath, file.value);
 
   if (error) {
     console.error("Error uploading image: ", error);
