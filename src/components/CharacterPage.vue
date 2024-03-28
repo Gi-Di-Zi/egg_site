@@ -6,11 +6,6 @@ import ALn from "./EggCharacter/A_Ln.vue";
 import DolDol from "./EggCharacter/DolDol.vue";
 import AR from "./EggCharacter/A_R.vue";
 import { pageConfig } from "@/store";
-import {
-  userOutlined,
-  laptopOutlined,
-  notificationOutlined,
-} from "@ant-design/icons-vue";
 
 const store = pageConfig();
 
@@ -33,18 +28,10 @@ const showCharacter = (key) => {
     style="background: #fff; margin-right: 20px"
     class="verticalSider"
   >
-    <a-menu
-      v-model:selectedKeys="selectedKeys2"
-      v-model:openKeys="openKeys"
-      mode="inline"
-      style="height: 100%"
-    >
+    <a-menu mode="inline" style="height: 100%">
       <a-sub-menu key="sub1">
         <template #title>
-          <span>
-            <user-outlined />
-            알 시리즈
-          </span>
+          <span> 알 시리즈 </span>
         </template>
         <a-menu-item key="1" @click="() => showCharacter(1)"
           >아롱이</a-menu-item
@@ -61,10 +48,7 @@ const showCharacter = (key) => {
       </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
-          <span>
-            <laptop-outlined />
-            알의 가족
-          </span>
+          <span> 알의 가족 </span>
         </template>
         <a-menu-item key="5" @click="() => showCharacter(5)"
           >돌돌이</a-menu-item
@@ -75,10 +59,7 @@ const showCharacter = (key) => {
       </a-sub-menu>
       <a-sub-menu key="sub3">
         <template #title>
-          <span>
-            <notification-outlined />
-            기타
-          </span>
+          <span> 기타 </span>
         </template>
         <a-menu-item key="9" @click="() => showCharacter(9)"
           >고양이 종족</a-menu-item
@@ -98,18 +79,10 @@ const showCharacter = (key) => {
     class="horizontalSider"
     style="visibility: hidden; display: flex; position: absolute; width: 300px"
   >
-    <a-menu
-      v-model:selectedKeys="selectedKeys2"
-      v-model:openKeys="openKeys"
-      mode="horizontal"
-      theme="light"
-    >
+    <a-menu mode="horizontal" theme="light">
       <a-sub-menu key="sub3">
         <template #title>
-          <span>
-            <user-outlined />
-            알 시리즈
-          </span>
+          <span> 알 시리즈 </span>
         </template>
         <a-menu-item key="1" @click="() => showCharacter(1)"
           >아롱이</a-menu-item
@@ -126,10 +99,7 @@ const showCharacter = (key) => {
       </a-sub-menu>
       <a-sub-menu key="sub4">
         <template #title>
-          <span>
-            <laptop-outlined />
-            알의 가족
-          </span>
+          <span> 알의 가족 </span>
         </template>
         <a-menu-item key="5" @click="() => showCharacter(5)"
           >돌돌이</a-menu-item
@@ -140,10 +110,7 @@ const showCharacter = (key) => {
       </a-sub-menu>
       <a-sub-menu key="sub5">
         <template #title>
-          <span>
-            <notification-outlined />
-            기타
-          </span>
+          <span> 기타 </span>
         </template>
         <a-menu-item key="9" @click="() => showCharacter(9)"
           >고양이 종족</a-menu-item

@@ -1,5 +1,12 @@
 <script setup>
-import { ref, defineProps, defineEmits, watch, onMounted } from "vue";
+import {
+  ref,
+  defineProps,
+  defineEmits,
+  watch,
+  onMounted,
+  watchEffect,
+} from "vue";
 import dayjs from "dayjs";
 import { supabase } from "@/utils/supabase";
 import { message as msg } from "ant-design-vue";
@@ -40,6 +47,15 @@ watch(type, () => {
   } else {
     mainUrlDisabled.value = true; // Enable mainUrl input for other types
   }
+});
+
+watchEffect(() => {
+  title.value = props.data.title;
+  type.value = props.data.type;
+  videoUrl.value = props.data.videoUrl;
+  salesDescription.value = props.data.description;
+  createdDate.value = dayjs(props.data.createdDate);
+  showSwitch.value = props.data.show;
 });
 
 const deleteModalOn = () => {
@@ -112,7 +128,7 @@ async function changeGoods() {
   if (error) {
     console.log(error);
   } else {
-    emit("updateList");
+    emit("updateEpisodeList");
     newData;
   }
 }
