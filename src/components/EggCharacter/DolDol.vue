@@ -9,6 +9,7 @@
           id="mainImage"
           src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/dol/dol_profile.png?t=2024-03-20T04%3A42%3A44.335Z"
           class="charaImage"
+          oncontextmenu="return false;"
         />
       </a-flex>
 
@@ -65,6 +66,7 @@
         id="turnaroundImage"
         src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/dol/dol_application.png?t=2024-03-20T04%3A42%3A54.441Z"
         class="turnaroundImage"
+        oncontextmenu="return false;"
       />
     </div>
     <a-typography-title :level="4" style="text-align: start" class="typoMargin"
@@ -75,6 +77,7 @@
         alt="turnaround"
         src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/dol/dol_turnaround.png?t=2024-03-20T04%3A43%3A02.280Z"
         class="turnaroundImage"
+        oncontextmenu="return false;"
       />
     </div>
   </a-card>

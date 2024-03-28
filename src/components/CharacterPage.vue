@@ -31,7 +31,13 @@ const showCharacter = (key) => {
     <a-menu mode="inline" style="height: 100%">
       <a-sub-menu key="sub1">
         <template #title>
-          <span> 알 시리즈 </span>
+          <div style="display: flex">
+            <img
+              src="@/images/eggicon.png"
+              style="width: 30px; object-fit: contain"
+            />&nbsp;&nbsp;
+            <span>알 시리즈</span>
+          </div>
         </template>
         <a-menu-item key="1" @click="() => showCharacter(1)"
           >아롱이</a-menu-item

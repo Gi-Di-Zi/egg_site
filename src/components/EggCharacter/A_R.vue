@@ -9,6 +9,7 @@
           id="mainImage"
           src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_r/ar_profile.png?t=2024-03-20T04%3A38%3A01.251Z"
           class="charaImage"
+          oncontextmenu="return false;"
         />
       </a-flex>
 
@@ -57,6 +58,7 @@
         id="turnaroundImage"
         src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_r/ar_application.png?t=2024-03-20T04%3A38%3A14.475Z"
         class="turnaroundImage"
+        oncontextmenu="return false;"
       />
     </div>
     <a-typography-title :level="4" style="text-align: start" class="typoMargin"
@@ -67,6 +69,7 @@
         alt="turnaround"
         src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/a_r/ar_turnaround.png?t=2024-03-20T04%3A38%3A21.224Z"
         class="turnaroundImage"
+        oncontextmenu="return false;"
       />
     </div>
   </a-card>

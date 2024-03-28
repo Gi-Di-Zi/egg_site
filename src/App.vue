@@ -80,6 +80,7 @@ const cancelModal = () => {
           style="height: 64px; margin-right: 30px"
           alt="oops!"
           @click="backToMain"
+          oncontextmenu="return false;"
         />
       </div>
       <a-menu
@@ -128,6 +129,7 @@ const cancelModal = () => {
       style="width: 450px; margin: 10px"
     ></a-input-password>
   </a-modal>
+  <a-back-top />
 </template>
 
 <style></style>
