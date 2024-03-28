@@ -112,9 +112,14 @@ const cancelModal = () => {
         <router-view />
       </a-layout>
     </a-layout-content>
-    <a-layout-footer style="text-align: center">
-      The Egg Page ©2024 Created by Kim Dong Jin
+    <a-layout-footer style="text-align: end; color: #a0a0a0">
       <a-button @click="modalOn">관리자 페이지</a-button>
+      <p>Copyright © 2024 KIM DONG JIN & JIN YERIM. All Rights Reserved.</p>
+      <p>
+        이 사이트 내의 이미지 및 기타 소스들은 제작자 및 소유자의 허락없이는
+        사용할 수 없습니다.
+      </p>
+      <a-divider />
     </a-layout-footer>
   </a-layout>
 
