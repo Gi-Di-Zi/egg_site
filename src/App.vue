@@ -15,6 +15,10 @@ const adminPassword = ref("");
 
 const showPage = computed(() => store.state.showPage);
 
+addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+});
+
 const backToMain = () => {
   selectedKeys.value = ["0"];
   router.push("/");

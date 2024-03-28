@@ -139,6 +139,7 @@ onMounted(() => {
               v-show="showVideoPreview[index]"
               class="hover-video"
               @click="openVideoModal(index)"
+              @contextmenu.prevent
             />
             <p class="hover-text" :key="index" v-show="showText[index]">
               {{ itemTag(imageSources[index].type) }}
