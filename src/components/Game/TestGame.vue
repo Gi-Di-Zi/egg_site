@@ -11,6 +11,7 @@ let bombs;
 let gameOver = false;
 let restartButton;
 const preload = function () {
+  this.load.image("sky", require("@/images/background_cat world.png"));
   this.load.image("ground", require("@/components/gameAsset/platform.png"));
   this.load.image("restart", require("@/images/youtubePlay.png"));
   this.load.image("bomb", require("@/components/gameAsset/bomb.png"));
@@ -21,6 +22,7 @@ const preload = function () {
 };
 
 const create = function () {
+  this.add.image(640, 360, "sky");
   platform = this.physics.add.staticGroup();
   player = this.physics.add.sprite(100, 450, "dude");
 
