@@ -11,9 +11,15 @@ const gaugeValue = ref(0);
 const gaugeMax = 100;
 const gaugeDecreaseRate = 10; // 10 units per second
 
+let xPos = 20;
+let yPos = 20;
+
 const imageSource = ref(require("@/images/along1.png"));
 const imageSource2 = ref(require("@/images/along1.png"));
 const imageSource3 = ref(require("@/images/along1.png"));
+
+let lastInteractionTime = Date.now();
+const IDLE_INTERACTION_THRESHOLD = 10; // 유휴 상태로 판단되는 임계치 (초 단위)
 
 const eggGame = ref(null);
 
@@ -65,6 +71,26 @@ const resumeAnimation = () => {
   timeline1.resume();
 };
 
+const updateIdleMovement = () => {
+  // 사용자의 마지막 상호작용 이후 10초 이상이 경과한 경우
+  if ((Date.now() - lastInteractionTime) / 1000 > IDLE_INTERACTION_THRESHOLD) {
+    console.log("이동");
+    console.log(Math.random());
+    xPos += Math.random() * 100 - 50;
+    yPos += Math.random() * 100 - 50;
+
+    gsap.to("#draggableTest", 1, {
+      x: xPos,
+      y: yPos,
+      duration: 1,
+    });
+  }
+  // 아니라면 유휴 시간 경과 후에 다시 이동을 예약합니다
+  setTimeout(updateIdleMovement, 2000);
+
+  console.log("실행");
+};
+
 onMounted(() => {
   changePage("미니게임");
   timeline1 = gsap.to(animatedImage.value, {
@@ -84,14 +110,6 @@ onMounted(() => {
     ease: "power1.inOut",
   });
 
-  gsap.registerPlugin(Draggable);
-  Draggable.create("#draggableTest", {
-    bounds: window,
-    onClick: function (event) {
-      console.log("윙크!", event);
-    },
-  });
-
   gameTimeLine
     .to(eggGame.value, { rotation: 3, duration: 0.05 })
     .to(eggGame.value, { rotation: -3, duration: 0.05 })
@@ -99,6 +117,28 @@ onMounted(() => {
     .to(eggGame.value, { rotation: -3, duration: 0.05 })
     .to(eggGame.value, { rotation: 0, duration: 0.05 })
     .pause();
+
+  gsap.registerPlugin(Draggable);
+  // 드래그 가능하게 만든다.
+  Draggable.create("#draggableTest", {
+    bounds: window,
+    onClick: function (event) {
+      console.log("쿄-", event);
+    },
+    // 사용자가 이미지를 드래그할 때마다 마지막 상호작용 시간을 업데이트한다.
+    onDrag: function () {
+      lastInteractionTime = Date.now();
+      xPos = this.x;
+      yPos = this.y;
+    },
+    onDragEnd: function () {
+      lastInteractionTime = Date.now();
+      xPos = this.x;
+      yPos = this.y;
+    },
+  });
+
+  updateIdleMovement();
 });
 
 setInterval(() => {
@@ -135,13 +175,12 @@ setInterval(() => {
         @mouseup="resumeAnimation"
       />
     </div>
-
-    <img
-      id="draggableTest"
-      :src="imageSource3"
-      style="width: 80px; object-fit: contain"
-    />
   </div>
+  <img
+    id="draggableTest"
+    :src="imageSource3"
+    style="position: absolute; width: 80px; object-fit: contain; z-index: 9999"
+  />
   <a-row style="justify-content: space-between; margin: 30px">
     <a-button
       @click="gameSelect(1)"
