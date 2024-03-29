@@ -7,15 +7,12 @@ const game = ref(null);
 let platform;
 let player;
 let cursor;
-let stars;
-let score = 0;
-let scoreText;
 let bombs;
 let gameOver = false;
+let restartButton;
 const preload = function () {
-  this.load.image("sky", require("@/components/gameAsset/sky.png"));
   this.load.image("ground", require("@/components/gameAsset/platform.png"));
-  this.load.image("star", require("@/components/gameAsset/star.png"));
+  this.load.image("restart", require("@/images/youtubePlay.png"));
   this.load.image("bomb", require("@/components/gameAsset/bomb.png"));
   this.load.spritesheet("dude", require("@/components/gameAsset/dude.png"), {
     frameWidth: 32,
@@ -24,38 +21,33 @@ const preload = function () {
 };
 
 const create = function () {
-  this.add.image(400, 300, "sky");
-
   platform = this.physics.add.staticGroup();
   player = this.physics.add.sprite(100, 450, "dude");
-  scoreText = this.add.text(16, 16, "score: 0", {
-    fontSize: "32px",
-    fill: "#000",
-  });
-  stars = this.physics.add.group({
-    key: "star",
-    repeat: 11,
-    setXY: { x: 12, y: 0, stepX: 70 },
-  });
+
   bombs = this.physics.add.group();
 
-  platform.create(400, 568, "ground").setScale(2).refreshBody();
-  platform.create(600, 400, "ground");
-  platform.create(50, 250, "ground");
-  platform.create(750, 220, "ground");
+  this.time.addEvent({
+    delay: 2000,
+    callback: generateBombs,
+    callbackScope: this,
+    loop: true,
+  });
+
+  restartButton = this.add.sprite(640, 360, "restart").setInteractive();
+  restartButton.setVisible(false);
+
+  platform.create(400, 750, "ground").setScale(5).refreshBody();
 
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
   player.body.setGravityY(300);
 
-  stars.children.iterate(function (child) {
-    child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+  bombs.children.iterate(function (child) {
+    child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.6));
   });
   this.physics.add.collider(player, platform);
-  this.physics.add.collider(stars, platform);
   this.physics.add.collider(bombs, platform);
   this.physics.add.collider(player, bombs, hitBomb, null, this);
-  this.physics.add.overlap(player, stars, collectStar, null, this);
 
   this.anims.create({
     key: "left",
@@ -80,29 +72,15 @@ const create = function () {
   cursor = this.input.keyboard.createCursorKeys();
 };
 
-function collectStar(player, star) {
-  star.disableBody(true, true);
-
-  score += 10;
-  scoreText.setText("Score: " + score);
-
-  if (stars.countActive(true) === 0) {
-    stars.children.iterate(function (child) {
-      child.enableBody(true, child.x, 0, true, true);
-    });
-
-    var x =
-      player.x < 400
-        ? Phaser.Math.Between(400, 800)
-        : Phaser.Math.Between(0, 400);
-
-    var bomb = bombs.create(x, 16, "bomb");
-    bomb.setBounce(1);
-    bomb.setCollideWorldBounds(true);
-    bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-  }
-}
-
+const generateBombs = () => {
+  const bomb = bombs.create(Phaser.Math.Between(0, 1280), 16, "bomb");
+  bomb.setBounce(1);
+  bomb.setCollideWorldBounds(true);
+  bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+  setTimeout(() => {
+    bomb.destroy();
+  }, 10000);
+};
 // eslint-disable-next-line no-unused-vars
 function hitBomb(player, bomb) {
   this.physics.pause();
@@ -112,6 +90,14 @@ function hitBomb(player, bomb) {
   player.anims.play("turn");
 
   gameOver = true;
+
+  restartButton.setVisible(true);
+  restartButton.removeAllListeners();
+  restartButton.on("pointerup", () => {
+    // 상태 초기화
+    gameOver = false;
+    this.scene.restart();
+  });
 }
 
 const update = function () {
@@ -137,12 +123,12 @@ const update = function () {
   }
 };
 
-onMounted(() => {
+const initGame = () => {
   const config = {
     type: Phaser.AUTO,
     parent: "gameContainer",
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
     physics: {
       default: "arcade",
       arcade: {
@@ -157,11 +143,16 @@ onMounted(() => {
     },
   };
   game.value = new Phaser.Game(config);
+};
+
+onMounted(() => {
+  console.log("준비완료");
+  initGame();
 });
 </script>
 
 <template>
-  <div id="gameContainer"></div>
+  <div id="gameContainer" />
 </template>
 
 <style scoped></style>
