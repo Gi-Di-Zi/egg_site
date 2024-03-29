@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import { pageConfig } from "@/store";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
+import TestGame from "@/components/Game/TestGame.vue";
 
 const store = pageConfig();
 
@@ -96,34 +97,37 @@ setInterval(() => {
 
 <template>
   <a-typography-title :level="2">미니게임</a-typography-title>
-  <img
-    ref="eggGame"
-    :src="imageSource"
-    style="width: 300px; object-fit: contain"
-    @click="shakeIt"
-  />
-  <div style="height: 20px; width: 100px; border: 1px solid black">
-    <div
-      :style="{
-        height: '100%',
-        width: gaugeValue + '%',
-        backgroundColor: 'blue',
-      }"
-    ></div>
-  </div>
-  <div style="width: 100%">
+  <div hidden>
     <img
-      ref="animatedImage"
-      :src="imageSource2"
-      style="width: 200px; object-fit: contain"
-      @mousedown="pauseAnimation"
-      @mouseup="resumeAnimation"
+      ref="eggGame"
+      :src="imageSource"
+      style="width: 300px; object-fit: contain"
+      @click="shakeIt"
+    />
+    <div style="height: 20px; width: 100px; border: 1px solid black">
+      <div
+        :style="{
+          height: '100%',
+          width: gaugeValue + '%',
+          backgroundColor: 'blue',
+        }"
+      ></div>
+    </div>
+    <div style="width: 100%">
+      <img
+        ref="animatedImage"
+        :src="imageSource2"
+        style="width: 200px; object-fit: contain"
+        @mousedown="pauseAnimation"
+        @mouseup="resumeAnimation"
+      />
+    </div>
+
+    <img
+      id="draggableTest"
+      :src="imageSource3"
+      style="width: 80px; object-fit: contain"
     />
   </div>
-
-  <img
-    id="draggableTest"
-    :src="imageSource3"
-    style="width: 80px; object-fit: contain"
-  />
+  <TestGame />
 </template>
