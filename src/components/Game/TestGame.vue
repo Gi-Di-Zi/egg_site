@@ -4,12 +4,21 @@ import Phaser from "phaser";
 
 const game = ref(null);
 
+let startButton;
 let platform;
 let player;
 let cursor;
 let bombs;
 let gameOver = false;
 let restartButton;
+
+const startGame = () => {
+  // Phaser 게임 로직 시작
+  initGame();
+
+  // HTML 버튼 숨기기
+  startButton.style.display = "none";
+};
 const preload = function () {
   this.load.image(
     "sky",
@@ -138,7 +147,7 @@ const update = function () {
 const initGame = () => {
   const config = {
     type: Phaser.AUTO,
-    parent: "gameContainer",
+    parent: "gameBox",
     width: 1280,
     height: 720,
     physics: {
@@ -158,13 +167,31 @@ const initGame = () => {
 };
 
 onMounted(() => {
-  console.log("준비완료");
-  initGame();
+  startButton = document.getElementById("startButton");
 });
 </script>
 
 <template>
-  <div id="gameContainer" />
+  <div id="gameContainer">
+    <a-button id="startButton" @click="startGame">Start!</a-button>
+    <div id="gameBox"></div>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+#gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+#gameBox {
+  width: 1280px;
+  height: 720px;
+  background-color: #ececec;
+}
+#startButton {
+  position: absolute;
+}
+</style>
