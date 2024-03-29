@@ -22,7 +22,11 @@ const preload = function () {
 };
 
 const create = function () {
-  this.add.image(640, 360, "sky");
+  const bg = this.add.image(640, 360, "sky");
+  const scaleX = game.value.config.width / bg.width;
+  const scaleY = game.value.config.height / bg.height;
+  const scale = Math.max(scaleX, scaleY);
+  bg.setScale(scale).setScrollFactor(0);
   platform = this.physics.add.staticGroup();
   player = this.physics.add.sprite(100, 450, "dude");
 
