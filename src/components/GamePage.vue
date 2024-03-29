@@ -79,6 +79,9 @@ const updateIdleMovement = () => {
     xPos += Math.random() * 100 - 50;
     yPos += Math.random() * 100 - 50;
 
+    xPos = Math.max(0, Math.min(xPos, window.innerWidth - 80));
+    yPos = Math.max(0, Math.min(yPos, window.innerHeight - 80));
+
     gsap.to("#draggableTest", 1, {
       x: xPos,
       y: yPos,
@@ -124,6 +127,9 @@ onMounted(() => {
     bounds: window,
     onClick: function (event) {
       console.log("쿄-", event);
+      lastInteractionTime = Date.now();
+      xPos = this.x;
+      yPos = this.y;
     },
     // 사용자가 이미지를 드래그할 때마다 마지막 상호작용 시간을 업데이트한다.
     onDrag: function () {
