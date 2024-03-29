@@ -11,8 +11,14 @@ let bombs;
 let gameOver = false;
 let restartButton;
 const preload = function () {
-  this.load.image("sky", require("@/images/background_cat world.png"));
-  this.load.image("ground", require("@/components/gameAsset/platform.png"));
+  this.load.image(
+    "sky",
+    require("@/components/gameAsset/background_cat-world_2.png")
+  );
+  this.load.image(
+    "ground",
+    require("@/components/gameAsset/background_cat-world_ground.png")
+  );
   this.load.image("restart", require("@/images/youtubePlay.png"));
   this.load.image("bomb", require("@/components/gameAsset/bomb.png"));
   this.load.spritesheet("dude", require("@/components/gameAsset/dude.png"), {
@@ -42,7 +48,7 @@ const create = function () {
   restartButton = this.add.sprite(640, 360, "restart").setInteractive();
   restartButton.setVisible(false);
 
-  platform.create(400, 750, "ground").setScale(5).refreshBody();
+  platform.create(640, 660, "ground").setScale(0.6666).refreshBody();
 
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
