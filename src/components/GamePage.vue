@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import { pageConfig } from "@/store";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
-import TestGame from "@/components/Game/TestGame.vue";
+import DougeGame from "@/components/Game/DougeGame.vue";
 
 const store = pageConfig();
 
@@ -18,6 +18,9 @@ const imageSource3 = ref(require("@/images/along1.png"));
 const eggGame = ref(null);
 
 const animatedImage = ref(null);
+
+const gameCode = ref(0);
+const selectButtonShow = ref(true);
 
 const shakeIt = () => {
   if (gaugeValue.value < 100) {
@@ -40,6 +43,16 @@ const vw = window.innerWidth / 100;
 const target = vw * 95 - 300;
 
 const { changePage } = store;
+
+const gameSelect = (number) => {
+  gameCode.value = number;
+  selectButtonShow.value = false;
+};
+
+const gameBack = () => {
+  gameCode.value = 0;
+  selectButtonShow.value = true;
+};
 
 // 애니메이션 멈추기
 const pauseAnimation = () => {
@@ -129,5 +142,34 @@ setInterval(() => {
       style="width: 80px; object-fit: contain"
     />
   </div>
-  <TestGame />
+  <a-row style="justify-content: space-between; margin: 30px">
+    <a-button
+      @click="gameSelect(1)"
+      v-if="selectButtonShow"
+      style="width: 25%; height: 200px"
+      >1번 게임</a-button
+    >
+    <a-button
+      @click="gameSelect(2)"
+      v-if="selectButtonShow"
+      style="width: 25%; height: 200px"
+      >2번 게임</a-button
+    >
+    <a-button
+      @click="gameSelect(3)"
+      v-if="selectButtonShow"
+      style="width: 25%; height: 200px"
+      >3번 게임</a-button
+    >
+  </a-row>
+
+  <DougeGame v-if="gameCode == 1" />
+  <a-row style="justify-content: center; margin: 30px">
+    <a-button
+      @click="gameBack"
+      v-if="!selectButtonShow"
+      style="width: 1280px; height: 100px"
+      >돌아가기</a-button
+    >
+  </a-row>
 </template>
