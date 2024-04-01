@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 import DougeGame from "@/components/Game/DougeGame.vue";
 import AssemblyGame from "@/components/Game/AssemblyGame.vue";
+import MoleGame from "@/components/Game/MoleGame.vue";
 
 const store = pageConfig();
 
@@ -213,6 +214,7 @@ setInterval(() => {
 
   <DougeGame v-if="gameCode == 1" />
   <AssemblyGame v-if="gameCode == 2" />
+  <MoleGame v-if="gameCode == 3" />
   <a-row style="justify-content: center; margin: 30px">
     <a-button
       @click="gameBack"
