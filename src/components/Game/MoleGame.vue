@@ -39,13 +39,13 @@ const create = function () {
   this.moles = [];
   this.hides = [];
   const positions = [
-    { x: 120, y: 200 },
-    { x: 440, y: 200 },
-    { x: 120, y: 380 },
-    { x: 440, y: 380 },
-    { x: 760, y: 380 },
-    { x: 120, y: 560 },
-    { x: 440, y: 560 },
+    { x: 470, y: 350 },
+    { x: 800, y: 350 },
+    { x: 320, y: 530 },
+    { x: 640, y: 530 },
+    { x: 960, y: 530 },
+    { x: 470, y: 710 },
+    { x: 800, y: 710 },
   ];
   for (let i = 0; i < positions.length; i++) {
     this.physics.add.sprite(positions[i].x, positions[i].y - 50, "hole");
@@ -67,15 +67,15 @@ const create = function () {
     this.hides.push(hide);
   }
 
-  this.scoreText = this.add.text(16, 16, `Score: ${score.value}`, {
+  this.scoreText = this.add.text(362, 43, score.value, {
     fontFamily: "Arial",
     fontSize: 24,
-    color: "#fff",
+    color: "#000",
   });
-  this.timeText = this.add.text(16, 40, `Time: ${timeLeft.value}`, {
+  this.timeText = this.add.text(370, 105, `Time: ${timeLeft.value}`, {
     fontFamily: "Arial",
     fontSize: 24,
-    color: "#fff",
+    color: "#000",
   });
   setInterval(() => {
     let index = Math.floor(Math.random() * this.moles.length);
@@ -96,7 +96,7 @@ const create = function () {
       mole.setActive(false);
       score.value += 1;
       console.log(score.value);
-      this.scoreText.setText(`Score: ${score.value}`);
+      this.scoreText.setText(score.value);
       setTimeout(() => {
         // setTimeout 함수 진행 후, y좌표를 원상복귀시키며 두더지를 비활성화
         mole.y -= 70;
@@ -111,7 +111,7 @@ const create = function () {
 
 const update = function () {
   timeLeft.value -= 1 / 60;
-  this.timeText.setText(`Time: ${Math.round(timeLeft.value)}`);
+  this.timeText.setText(Math.round(timeLeft.value));
 
   //게임 종료
   if (this.timeLeft <= 0) {
