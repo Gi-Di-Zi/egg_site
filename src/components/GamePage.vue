@@ -4,12 +4,15 @@ import { pageConfig } from "@/store";
 import { gsap } from "gsap";
 import Draggable from "gsap/Draggable";
 import DougeGame from "@/components/Game/DougeGame.vue";
+import AssemblyGame from "@/components/Game/AssemblyGame.vue";
 
 const store = pageConfig();
 
 const gaugeValue = ref(0);
 const gaugeMax = 100;
 const gaugeDecreaseRate = 10; // 10 units per second
+
+let idleTimeout;
 
 let xPos = 20;
 let yPos = 20;
@@ -18,7 +21,7 @@ const imageSource = ref(require("@/images/along1.png"));
 const imageSource2 = ref(require("@/images/along1.png"));
 const imageSource3 = ref(require("@/images/along1.png"));
 
-let lastInteractionTime = Date.now();
+let lastInteractionTime = ref(Date.now());
 const IDLE_INTERACTION_THRESHOLD = 10; // 유휴 상태로 판단되는 임계치 (초 단위)
 
 const eggGame = ref(null);
@@ -72,15 +75,19 @@ const resumeAnimation = () => {
 };
 
 const updateIdleMovement = () => {
+  clearTimeout(idleTimeout);
   // 사용자의 마지막 상호작용 이후 10초 이상이 경과한 경우
-  if ((Date.now() - lastInteractionTime) / 1000 > IDLE_INTERACTION_THRESHOLD) {
-    console.log("이동");
-    console.log(Math.random());
+  if (
+    (Date.now() - lastInteractionTime.value) / 1000 >
+    IDLE_INTERACTION_THRESHOLD
+  ) {
+    console.log(Date.now());
+    console.log(lastInteractionTime.value);
     xPos += Math.random() * 100 - 50;
     yPos += Math.random() * 100 - 50;
 
-    xPos = Math.max(0, Math.min(xPos, window.innerWidth - 80));
-    yPos = Math.max(0, Math.min(yPos, window.innerHeight - 80));
+    xPos = Math.max(-40, Math.min(xPos, window.innerWidth - 40));
+    yPos = Math.max(-40, Math.min(yPos, window.innerHeight - 40));
 
     gsap.to("#draggableTest", 1, {
       x: xPos,
@@ -89,9 +96,7 @@ const updateIdleMovement = () => {
     });
   }
   // 아니라면 유휴 시간 경과 후에 다시 이동을 예약합니다
-  setTimeout(updateIdleMovement, 2000);
-
-  console.log("실행");
+  idleTimeout = setTimeout(updateIdleMovement, 2000);
 };
 
 onMounted(() => {
@@ -126,19 +131,17 @@ onMounted(() => {
   Draggable.create("#draggableTest", {
     bounds: window,
     onClick: function (event) {
+      lastInteractionTime.value = Date.now();
       console.log("쿄-", event);
-      lastInteractionTime = Date.now();
-      xPos = this.x;
-      yPos = this.y;
     },
     // 사용자가 이미지를 드래그할 때마다 마지막 상호작용 시간을 업데이트한다.
     onDrag: function () {
-      lastInteractionTime = Date.now();
+      lastInteractionTime.value = Date.now();
       xPos = this.x;
       yPos = this.y;
     },
     onDragEnd: function () {
-      lastInteractionTime = Date.now();
+      lastInteractionTime.value = Date.now();
       xPos = this.x;
       yPos = this.y;
     },
@@ -209,6 +212,7 @@ setInterval(() => {
   </a-row>
 
   <DougeGame v-if="gameCode == 1" />
+  <AssemblyGame v-if="gameCode == 2" />
   <a-row style="justify-content: center; margin: 30px">
     <a-button
       @click="gameBack"
