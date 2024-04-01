@@ -17,26 +17,56 @@ const startGame = () => {
 };
 const preload = function () {
   this.load.image(
+    "background",
+    require("@/components/gameAsset/mole_background.png")
+  );
+  this.load.image(
     "mole",
-    "https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/easter_egg/easter_egg_profile.png"
+    require("@/components/gameAsset/algamesource_ddg_along.png")
+  );
+  this.load.image(
+    "hole",
+    require("@/components/gameAsset/algamesource_ddg_b.png")
+  );
+  this.load.image(
+    "hide",
+    require("@/components/gameAsset/algamesource_ddg_a.png")
   );
 };
 
 const create = function () {
+  this.add.image(640, 360, "background");
   this.moles = [];
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 3; j++) {
-      const mole = this.physics.add.sprite(
-        150 + i * 320,
-        250 + j * 180,
-        "mole"
-      );
-      mole.setInteractive();
-      mole.setActive(false).setVisible(false);
-      mole.on("pointerdown", () => hitMole(mole));
-      this.moles.push(mole);
-    }
+  this.hides = [];
+  const positions = [
+    { x: 120, y: 200 },
+    { x: 440, y: 200 },
+    { x: 120, y: 380 },
+    { x: 440, y: 380 },
+    { x: 760, y: 380 },
+    { x: 120, y: 560 },
+    { x: 440, y: 560 },
+  ];
+  for (let i = 0; i < positions.length; i++) {
+    this.physics.add.sprite(positions[i].x, positions[i].y - 50, "hole");
+
+    const mole = this.physics.add.sprite(
+      positions[i].x,
+      positions[i].y,
+      "mole"
+    );
+    mole.setInteractive();
+    mole.on("pointerdown", () => hitMole(mole));
+    this.moles.push(mole);
+
+    const hide = this.physics.add.sprite(
+      positions[i].x,
+      positions[i].y - 50,
+      "hide"
+    );
+    this.hides.push(hide);
   }
+
   this.scoreText = this.add.text(16, 16, `Score: ${score.value}`, {
     fontFamily: "Arial",
     fontSize: 24,
@@ -47,24 +77,34 @@ const create = function () {
     fontSize: 24,
     color: "#fff",
   });
-
   setInterval(() => {
-    const mole = this.moles[Math.floor(Math.random() * this.moles.length)];
-    mole.y -= 80;
-    mole.setActive(true).setVisible(true);
+    let index = Math.floor(Math.random() * this.moles.length);
+
+    // 두더지 스프라이트의 y 좌표를 위로 움직여 스프라이트가 보이게 합니다.
+    this.moles[index].y -= 70;
+    this.moles[index].setActive(true);
+
     setTimeout(() => {
-      mole.y += 80;
-      mole.setActive(false).setVisible(false);
-    }, 800);
-  }, 800);
+      // 두더지 스프라이트의 y 좌표를 아래로 움직여 스프라이트가 숨게 합니다.
+      this.moles[index].y += 70;
+      this.moles[index].setActive(false);
+    }, 600);
+  }, 600);
 
   const hitMole = function (mole) {
     if (mole.active) {
-      mole.y += 80;
-      mole.setActive(false).setVisible(false);
+      mole.setActive(false);
       score.value += 1;
       console.log(score.value);
       this.scoreText.setText(`Score: ${score.value}`);
+      setTimeout(() => {
+        // setTimeout 함수 진행 후, y좌표를 원상복귀시키며 두더지를 비활성화
+        mole.y -= 70;
+        mole.setActive(false);
+      }, 600);
+
+      // 두더지를 위로 올리는 동작은 setTimeout 외부에서 별도로 처리
+      mole.y += 70;
     }
   }.bind(this);
 };
