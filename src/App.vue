@@ -73,10 +73,16 @@ const cancelModal = () => {
 </script>
 
 <template>
-  <a-layout>
+  <a-layout style="border-radius: 20px !important">
     <a-layout-header
       class="header"
-      style="display: flex; justify-content: start; width: 100%"
+      style="
+        display: flex;
+        justify-content: start;
+        width: 99%;
+        margin-left: 0.5%;
+        border-radius: 30px;
+      "
     >
       <div class="logo">
         <img
@@ -108,11 +114,20 @@ const cancelModal = () => {
         <a-breadcrumb-item>알 페이지</a-breadcrumb-item>
         <a-breadcrumb-item>{{ showPage }}</a-breadcrumb-item>
       </a-breadcrumb>
-      <a-layout style="padding: 24px 24px; background: #fff; min-height: 280px">
+      <a-layout
+        style="
+          padding: 24px 24px;
+          background: #fff;
+          min-height: 280px;
+          border-radius: 20px;
+        "
+      >
         <router-view />
       </a-layout>
     </a-layout-content>
-    <a-layout-footer style="text-align: end; color: #a0a0a0">
+    <a-layout-footer
+      style="text-align: end; color: #a0a0a0; border-radius: 20px !important"
+    >
       <a-button @click="modalOn">관리자 페이지</a-button>
       <p>Copyright © 2024 KIM DONG JIN & JIN YERIM. All Rights Reserved.</p>
       <p>

@@ -21,6 +21,9 @@ body {
 .ant-typography {
     font-family: MyCustomFont sans-serif !important;
 }
+.ant-menu-item-selected {
+
+}
 .ant-menu {
     font-family: MyCustomFont sans-serif !important;
 }
