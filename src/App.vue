@@ -74,25 +74,29 @@ const cancelModal = () => {
 
 <template>
   <a-layout style="border-radius: 20px !important">
+    <div
+      class="logo"
+      style="width: 100%; display: flex; justify-content: center; padding: 10px"
+    >
+      <img
+        src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/group/group_profile.png?t=2024-03-19T07%3A17%3A08.212Z"
+        style="height: 64px"
+        alt="oops!"
+        @click="backToMain"
+        oncontextmenu="return false;"
+      />
+    </div>
     <a-layout-header
       class="header"
       style="
         display: flex;
-        justify-content: start;
-        width: 99%;
-        margin-left: 0.5%;
+        justify-content: center;
+        width: 90%;
+        margin-left: 5%;
         border-radius: 30px;
+        margin-bottom: 20px;
       "
     >
-      <div class="logo">
-        <img
-          src="https://fmcaxedcftqxqcdrdpfd.supabase.co/storage/v1/object/public/image/group/group_profile.png?t=2024-03-19T07%3A17%3A08.212Z"
-          style="height: 64px; margin-right: 30px"
-          alt="oops!"
-          @click="backToMain"
-          oncontextmenu="return false;"
-        />
-      </div>
       <a-menu
         theme="dark"
         mode="horizontal"
@@ -110,7 +114,7 @@ const cancelModal = () => {
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
-      <a-breadcrumb style="margin: 16px 0">
+      <a-breadcrumb style="margin: 16px 0; display: none">
         <a-breadcrumb-item>알 페이지</a-breadcrumb-item>
         <a-breadcrumb-item>{{ showPage }}</a-breadcrumb-item>
       </a-breadcrumb>

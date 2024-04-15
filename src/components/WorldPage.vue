@@ -21,7 +21,7 @@ const showWorld = (key) => {
   <a-layout-sider
     width="200"
     style="background: #fff; margin-right: 20px"
-    class="verticalSider"
+    class="wideMenu"
   >
     <a-menu mode="inline" style="height: 100%">
       <a-sub-menu key="sub1">
@@ -81,7 +81,7 @@ const showWorld = (key) => {
   </a-layout-sider>
 
   <a-layout-header
-    class="horizontalSider"
+    class="narrowMenu"
     style="visibility: hidden; display: flex; position: absolute; width: 300px"
   >
     <a-menu mode="horizontal" style="height: 100%">

@@ -40,6 +40,13 @@ body {
     font-family: MyCustomFont sans-serif !important;
 }
 
+.headerMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 img {
     display: block;
@@ -76,6 +83,10 @@ img {
     margin: 20px auto;
 }
 
+.tilt-on-hover:hover {
+    transform: rotate(10deg);
+}
+
 @media screen and (max-width: 1400px) {
     .charaExplain {
         flex-direction: column !important;
@@ -91,10 +102,10 @@ img {
 }
 
 @media screen and (max-width: 1120px) {
-    .verticalSider {
+    .wideMenu {
         display: none !important;
     }
-    .horizontalSider {
+    .narrowMenu {
         visibility: visible !important;
         background-color: white !important;
     }
