@@ -135,17 +135,29 @@ img {
         width: 90px;
     }
     .segmented {
-        width: 340px !important;
+        width: 340px ;
     }
     .ant-segmented-item-label {
-        font-size: 11px !important;
+        font-size: 11px;
     }
     .goodsCard {
-        min-width: 350px !important;
-        mix-width: 350px !important;
+        min-width: 350px ;
+        mix-width: 350px ;
     }
 
     .header {
         display: block !important;
     }
+
+    .narrowMenu {
+        display: flex ;
+        width: 50% !important;
+    }
+
+    .ant-menu-overflow-item {
+        padding-inline: 10px !important;
+        font-size: 12px;
+    }
+
+
 }

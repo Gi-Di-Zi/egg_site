@@ -12,10 +12,21 @@
 
 DB 및 Storage - Supabase
 
-UI - Ant Design for Vue
+UI - Ant Design Vue
 
 게임 및 이펙트 - GSAP, Phaser
 ````
+[Vue3](https://ko.vuejs.org/)
+
+[Pinia](https://pinia.vuejs.kr/)
+
+[supabase](https://supabase.com/)
+
+[Ant Design Vue](https://www.antdv.com/docs/vue/introduce)
+
+[GSAP](https://gsap.com/)
+
+[Phaser](https://phaser.io/)
 
 ### 폴더 설명
 ````
