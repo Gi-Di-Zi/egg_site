@@ -139,14 +139,14 @@ img {
         width: 90px;
     }
     .segmented {
-        width: 340px ;
+        width: 320px !important;
     }
     .ant-segmented-item-label {
-        font-size: 11px;
+        font-size: 10px !important;
     }
     .goodsCard {
-        min-width: 350px ;
-        mix-width: 350px ;
+        min-width: 300px !important;
+        mix-width: 300px !important;
     }
 
     .header {
