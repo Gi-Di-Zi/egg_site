@@ -18,19 +18,26 @@
         justify="flex-start"
         align="flex-start"
         style="margin-left: 50px"
+        class="narrowTypo3"
       >
-        <a-typography-title :level="2"> “어... 이게 뭐지?” </a-typography-title>
+        <a-typography-title :level="2" class="narrowTypo">
+          “어... 이게 뭐지?”
+        </a-typography-title>
 
-        <a-typography-title :level="4">
-          <span style="margin-right: 15px">이름 : 아롱이 (알 종족)</span> |
+        <a-typography-title :level="4" class="narrowTypo2">
+          <span style="margin-right: 15px">이름 : 아롱이 (알 종족)</span>
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >생일 : 3월 26일
           </span>
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >성격 : 어리숙함</span
           >
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px"
             >소속 : 감자시티 대기업 인턴, 조명가게 알바생</span
           >

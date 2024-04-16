@@ -17,22 +17,27 @@
         vertical
         justify="flex-start"
         align="flex-start"
+        class="narrowTypo3"
         style="margin-left: 50px"
       >
-        <a-typography-title :level="2">
+        <a-typography-title :level="2" class="narrowTypo">
           “무슨 일 있으면 형한테 말해.”
         </a-typography-title>
 
-        <a-typography-title :level="4">
-          <span style="margin-right: 15px">이름 : 아릉이 (알 종족)</span> |
+        <a-typography-title :level="4" class="narrowTypo2">
+          <span style="margin-right: 15px">이름 : 아릉이 (알 종족)</span>
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >생일 : 10월 23일
           </span>
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >성격 : 상남자, 츤데레</span
           >
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px"
             >특이사항 : 모든 옷이 작아서 불만이다.</span
           >

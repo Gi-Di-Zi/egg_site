@@ -17,22 +17,27 @@
         vertical
         justify="flex-start"
         align="flex-start"
+        class="narrowTypo3"
         style="margin-left: 50px"
       >
-        <a-typography-title :level="2">
+        <a-typography-title :level="2" class="narrowTypo">
           “이거 재밌겠는걸? 히히히...”
         </a-typography-title>
 
-        <a-typography-title :level="4">
-          <span style="margin-right: 15px">이름 : 아몽이 (알 종족)</span> |
+        <a-typography-title :level="4" class="narrowTypo2">
+          <span style="margin-right: 15px">이름 : 아몽이 (알 종족)</span>
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >생일 : 11월 18일
           </span>
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >성격 : 장난꾸러기, 매사에 적극적</span
           >
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px"
             >좋아하는 음식 : 케이크, 달달한 계란 요리
           </span>

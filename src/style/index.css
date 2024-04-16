@@ -87,6 +87,10 @@ img {
     transform: rotate(10deg);
 }
 
+.narrowSpace {
+    display: none;
+}
+
 @media screen and (max-width: 1400px) {
     .charaExplain {
         flex-direction: column !important;
@@ -157,6 +161,37 @@ img {
         padding-inline: 10px !important;
         font-size: 12px;
     }
+
+    .typoSytle {
+        font-size: 15px;
+    }
+
+    .narrowSpace {
+        display: block;
+    }
+
+    .wideSpace {
+        display: none;
+    }
+
+    #mainImage {
+        left: 50%;
+    }
+
+    .narrowTypo {
+        font-size: 25px !important;
+        margin-bottom: 30px !important;
+        margin-left: 25px;
+    }
+
+    .narrowTypo2 {
+        font-size: 18px !important;
+    }
+
+    .narrowTypo3 {
+        margin-left: 0px !important;
+    }
+
 
 
 }

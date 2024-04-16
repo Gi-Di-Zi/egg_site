@@ -18,24 +18,28 @@
         justify="flex-start"
         align="flex-start"
         style="margin-left: 50px"
+        class="narrowTypo3"
       >
-        <a-typography-title :level="2">
+        <a-typography-title :level="2" class="narrowTypo">
           “가만히 있으면 돈이 나오냐? 돈을 벌어야지!”
         </a-typography-title>
 
-        <a-typography-title :level="4">
+        <a-typography-title :level="4" class="narrowTypo2">
           <span style="margin-right: 15px"
             >이름 : 돌돌이 (알 종족 / 희귀형 - Real Stone)</span
           >
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >생일 : 7월 14일
           </span>
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px; margin-right: 15px"
             >성격 : 고지식함</span
           >
-          |
+          <span class="wideSpace">|</span>
+          <p class="narrowSpace" />
           <span style="margin-left: 15px">소속 : 조명가게 사장님</span>
         </a-typography-title>
 
