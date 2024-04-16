@@ -150,8 +150,7 @@ img {
     }
 
     .narrowMenu {
-        display: flex ;
-        width: 50% !important;
+        width: 60% !important;
     }
 
     .ant-menu-overflow-item {

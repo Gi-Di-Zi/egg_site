@@ -52,20 +52,15 @@ const showWorld = (key) => {
     >
       <a-menu
         mode="horizontal"
-        style="
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          flex-grow: 1;
-        "
+        style="height: 100%; display: block; justify-content: center"
       >
         <a-sub-menu key="sub1">
           <template #title>
-            <span> 조명가게 </span>
+            <span> 조명가게</span>
           </template>
           <a-sub-menu key="sub1-1">
             <template #title>
-              <span> 가게 구조 </span>
+              <span> 가게 구조</span>
             </template>
             <a-menu-item key="1" @click="() => showWorld(1)"
               >구조도</a-menu-item
@@ -91,7 +86,7 @@ const showWorld = (key) => {
         </a-sub-menu>
         <a-sub-menu key="sub2">
           <template #title>
-            <span> 감자 시티 </span>
+            <span> 감자 시티</span>
           </template>
           <a-menu-item key="9" @click="() => showWorld(9)">개요</a-menu-item>
           <a-menu-item key="10" @click="() => showWorld(10)"

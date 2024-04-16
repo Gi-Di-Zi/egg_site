@@ -38,7 +38,7 @@ const showCharacter = (key) => {
         mode="horizontal"
         style="
           height: 100%;
-          display: flex;
+          display: block;
           justify-content: center;
           flex-grow: 1;
         "

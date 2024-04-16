@@ -149,12 +149,12 @@ const cancelModal = () => {
     <a-input
       v-model:value="adminId"
       placeholder="관리자 아이디"
-      style="width: 450px; margin: 10px"
+      style="width: 95%; margin: 10px"
     ></a-input>
     <a-input-password
       v-model:value="adminPassword"
       placeholder="관리자 비밀번호"
-      style="width: 450px; margin: 10px"
+      style="width: 95%; margin: 10px"
     ></a-input-password>
   </a-modal>
   <a-back-top />
