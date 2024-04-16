@@ -113,12 +113,13 @@ const cancelModal = () => {
         <a-menu-item key="7" @click="() => movePage(7)">Contect</a-menu-item>
       </a-menu>
     </a-layout-header>
-    <a-layout-content style="padding: 0 50px">
+    <a-layout-content class="narrowContents" style="padding: 0 50px">
       <a-breadcrumb style="margin: 16px 0; display: none">
         <a-breadcrumb-item>알 페이지</a-breadcrumb-item>
         <a-breadcrumb-item>{{ showPage }}</a-breadcrumb-item>
       </a-breadcrumb>
       <a-layout
+        class="narrowContents2"
         style="
           padding: 24px 24px;
           background: #fff;

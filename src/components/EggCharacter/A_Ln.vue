@@ -39,7 +39,7 @@
           <span class="wideSpace">|</span>
           <p class="narrowSpace" />
           <span style="margin-left: 15px"
-            >특이사항 : 모든 옷이 작아서 불만이다.</span
+            >특이사항 : 옷이 항상 커서 불만이다.</span
           >
         </a-typography-title>
 

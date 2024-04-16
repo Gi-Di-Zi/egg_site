@@ -192,6 +192,14 @@ img {
         margin-left: 0px !important;
     }
 
+    .narrowContents {
+        padding: 0 15px !important;
+    }
+
+    .narrowContents2 {
+        padding: 24px 15px !important;
+    }
+
 
 
 }
