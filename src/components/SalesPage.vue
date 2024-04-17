@@ -76,6 +76,7 @@ async function sortGoodsList(event) {
 
   if (event === "랭킹순") {
     sortedArray = data;
+    goods.list = [...sortedArray];
   } else if (event === "판매량순") {
     sortedArray = data.sort((a, b) => b.count_sales - a.count_sales);
     goods.list = [...sortedArray];

@@ -48,7 +48,12 @@ async function getChat() {
   <a-row>
     <a-col
       :span="8"
-      style="display: flex; justify-content: center; border: 1px solid gray"
+      style="
+        display: flex;
+        justify-content: center;
+        border: 1px solid gray;
+        border-radius: 30px;
+      "
     >
       <div style="width: 90%">
         <a-typography-title :level="3">채팅</a-typography-title>
@@ -155,7 +160,7 @@ async function getChat() {
         display: flex;
         justify-content: center;
         border: 1px solid gray;
-        border-radius: 10px;
+        border-radius: 30px;
       "
     >
       <a-typography-title :level="3">파일 업로드</a-typography-title>
