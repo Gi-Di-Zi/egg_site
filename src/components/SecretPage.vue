@@ -34,6 +34,7 @@ const deleteChat = async (id) => {
 
 onMounted(() => {
   getChat();
+  setInterval(getChat, 10000);
 });
 
 async function getChat() {
@@ -75,63 +76,65 @@ async function getChat() {
             ></a-switch>
             <span>너</span>
           </div>
-          <template v-for="chat in list.chatList" :key="chat.id">
-            <div
-              v-if="chat.speaker === 'me'"
-              style="
-                display: flex;
-                justify-content: end;
-                margin: 10px;
-                align-items: center;
-              "
-            >
-              <CloseCircleTwoTone
-                style="align-content: center; margin-right: 10px"
-                two-tone-color="#eb2f96"
-                @click="deleteChat(chat.id)"
-              />
-              <h4 style="align-content: center">
-                {{ chat.created_at.split("T")[0] }}
-              </h4>
-              <h2
+          <div style="overflow-y: auto; max-height: 560px">
+            <template v-for="chat in list.chatList" :key="chat.id">
+              <div
+                v-if="chat.speaker === 'me'"
                 style="
-                  border-radius: 20px;
-                  background-color: #ececec;
-                  padding-left: 20px;
-                  padding-right: 20px;
-                  align-content: center;
-                  margin-left: 10px;
+                  display: flex;
+                  justify-content: end;
+                  margin: 10px;
+                  align-items: center;
                 "
               >
-                {{ chat.context }}
-              </h2>
-            </div>
-            <div
-              v-if="chat.speaker === 'you'"
-              style="display: flex; justify-content: start; margin: 10px"
-            >
-              <h2
-                style="
-                  border-radius: 20px;
-                  background-color: #ececec;
-                  padding-left: 20px;
-                  padding-right: 20px;
-                  align-content: center;
-                  margin-right: 10px;
-                "
+                <CloseCircleTwoTone
+                  style="align-content: center; margin-right: 10px"
+                  two-tone-color="#eb2f96"
+                  @click="deleteChat(chat.id)"
+                />
+                <h4 style="align-content: center">
+                  {{ chat.created_at.split("T")[0] }}
+                </h4>
+                <h2
+                  style="
+                    border-radius: 20px;
+                    background-color: #ececec;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    align-content: center;
+                    margin-left: 10px;
+                  "
+                >
+                  {{ chat.context }}
+                </h2>
+              </div>
+              <div
+                v-if="chat.speaker === 'you'"
+                style="display: flex; justify-content: start; margin: 10px"
               >
-                {{ chat.context }}
-              </h2>
-              <h4 style="align-content: center">
-                {{ chat.created_at.split("T")[0] }}
-              </h4>
-              <CloseCircleTwoTone
-                style="align-content: center; margin-left: 10px"
-                two-tone-color="#eb2f96"
-                @click="deleteChat(chat.id)"
-              />
-            </div>
-          </template>
+                <h2
+                  style="
+                    border-radius: 20px;
+                    background-color: #ececec;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    align-content: center;
+                    margin-right: 10px;
+                  "
+                >
+                  {{ chat.context }}
+                </h2>
+                <h4 style="align-content: center">
+                  {{ chat.created_at.split("T")[0] }}
+                </h4>
+                <CloseCircleTwoTone
+                  style="align-content: center; margin-left: 10px"
+                  two-tone-color="#eb2f96"
+                  @click="deleteChat(chat.id)"
+                />
+              </div>
+            </template>
+          </div>
           <div
             style="position: absolute; bottom: 20px; width: 90%; display: flex"
           >
@@ -139,6 +142,7 @@ async function getChat() {
               placeholder="메시지 작성"
               style="margin-bottom: 10px; margin-right: 10px"
               v-model:value="newMessage"
+              @keyup.enter="sendMessage"
             />
             <a-button type="primary" @click="sendMessage">전송</a-button>
           </div>
