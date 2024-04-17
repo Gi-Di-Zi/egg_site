@@ -91,6 +91,11 @@ img {
     display: none;
 }
 
+.charaBtn {
+    width: 100px;
+    height: 150px;
+}
+
 @media screen and (max-width: 1400px) {
     .charaExplain {
         flex-direction: column !important;
@@ -139,7 +144,7 @@ img {
         width: 90px;
     }
     .segmented {
-        width: 320px !important;
+        width: 317px !important;
     }
     .ant-segmented-item-label {
         font-size: 10px !important;

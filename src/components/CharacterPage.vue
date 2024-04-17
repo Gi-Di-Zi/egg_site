@@ -24,13 +24,42 @@ const showCharacter = (key) => {
 
 <template>
   <div style="width: 100%; display: flex; justify-content: center">
+    <a-row
+      class="wideMenu"
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      "
+    >
+      <a-button @click="() => showCharacter(1)" class="charaBtn"
+        >아롱이</a-button
+      >
+      <a-button @click="() => showCharacter(2)" class="charaBtn"
+        >아몽이</a-button
+      >
+      <a-button @click="() => showCharacter(3)" class="charaBtn"
+        >아릉이</a-button
+      >
+      <a-button @click="() => showCharacter(4)" class="charaBtn">4</a-button>
+      <a-button @click="() => showCharacter(5)" class="charaBtn"
+        >돌돌이</a-button
+      >
+      <a-button @click="() => showCharacter(6)" class="charaBtn">아리</a-button>
+      <a-button @click="() => showCharacter(7)" class="charaBtn">7</a-button>
+      <a-button @click="() => showCharacter(8)" class="charaBtn">8</a-button>
+      <a-button @click="() => showCharacter(9)" class="charaBtn">9</a-button>
+      <a-button @click="() => showCharacter(10)" class="charaBtn">10</a-button>
+      <a-button @click="() => showCharacter(11)" class="charaBtn">11</a-button>
+      <a-button @click="() => showCharacter(12)" class="charaBtn">12</a-button>
+    </a-row>
     <a-layout-header
       class="narrowMenu"
       style="
         visibility: hidden;
         display: flex !important;
         position: absolute;
-        width: 85%;
         justify-content: center;
       "
     >
