@@ -11,6 +11,7 @@ import AdminPage from "@/components/AdminPage.vue";
 import ErrorPage from "@/components/ErrorPage.vue";
 import GoodsDetail from "@/components/Goods/GoodsDetail.vue";
 import GamePage from "@/components/GamePage.vue";
+import SecretPage from "@/components/SecretPage.vue";
 
 const routes = [
   { path: "/character", name: "character-page", component: CharacterPage },
@@ -21,6 +22,7 @@ const routes = [
   { path: "/sales/:id", name: "goods-detail", component: GoodsDetail },
   { path: "/contect", name: "contect-page", component: ContectPage },
   { path: "/game", name: "game-page", component: GamePage },
+  { path: "/secret", name: "secret-page", component: SecretPage },
   { path: "/", name: "main-page", component: MainPage },
   {
     path: "/admin",
